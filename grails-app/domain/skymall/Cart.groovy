@@ -7,6 +7,7 @@ class Cart {
 	
 	User owner
 	String status
+	
 
     static constraints = {
     }

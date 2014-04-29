@@ -60,7 +60,14 @@
 				</fieldset>
 			</g:form>
 			
-			<g:link controller="Product" action="list" id="${storeInstance.id}">Store Products</g:link>
+			
+			
+			<g:if test="${storeInstance?.storeType == 'Apparel'}">
+  				<g:link controller="Apparel" action="list" id="${storeInstance.id}">Store Products</g:link>
+			</g:if>
+			<g:else>
+  				
+			</g:else>
 			
 		</div>
 	</body>

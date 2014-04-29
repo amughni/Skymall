@@ -2,12 +2,21 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: productInstance, field: 'prodID', 'error')} required">
-	<label for="prodID">
-		<g:message code="product.prodID.label" default="Prod ID" />
+<div class="fieldcontain ${hasErrors(bean: productInstance, field: 'prodName', 'error')} required">
+	<label for="prodName">
+		<g:message code="product.prodName.label" default="Prod Name" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="prodID" required="" value="${productInstance?.prodID}"/>
+	<g:textField name="prodName" required="" value="${productInstance?.prodName}"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: productInstance, field: 'cart', 'error')} ">
+	<label for="cart">
+		<g:message code="product.cart.label" default="Cart" />
+		
+	</label>
+	
 
 </div>
 
@@ -16,7 +25,7 @@
 		<g:message code="product.count.label" default="Count" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field name="count" type="number" value="${productInstance.count}" required=""/>
+	<g:field name="count" type="number" value="${productInstance?.count}" required=""/>
 
 </div>
 
@@ -35,15 +44,6 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<g:field name="price" value="${fieldValue(bean: productInstance, field: 'price')}" required=""/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: productInstance, field: 'prodName', 'error')} ">
-	<label for="prodName">
-		<g:message code="product.prodName.label" default="Prod Name" />
-		
-	</label>
-	<g:textField name="prodName" value="${productInstance?.prodName}"/>
 
 </div>
 

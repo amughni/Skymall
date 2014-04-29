@@ -22,16 +22,17 @@
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
 			<ol class="property-list store">
-			
-				<g:if test="${storeInstance?.storeID}">
+				
+				<g:if test="${storeInstance?.storeName}">
 				<li class="fieldcontain">
-					<span id="storeID-label" class="property-label"><g:message code="store.storeID.label" default="Store ID" /></span>
+					<span id="storeName-label" class="property-label"><g:message code="store.storeName.label" default="Store Name" /></span>
 					
-						<span class="property-value" aria-labelledby="storeID-label"><g:fieldValue bean="${storeInstance}" field="storeID"/></span>
+						<span class="property-value" aria-labelledby="storeName-label"><g:fieldValue bean="${storeInstance}" field="storeName"/></span>
 					
 				</li>
 				</g:if>
-			
+				
+				
 				<g:if test="${storeInstance?.location}">
 				<li class="fieldcontain">
 					<span id="location-label" class="property-label"><g:message code="store.location.label" default="Location" /></span>
@@ -41,11 +42,12 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${storeInstance?.storeName}">
+				
+				<g:if test="${storeInstance?.storeType}">
 				<li class="fieldcontain">
-					<span id="storeName-label" class="property-label"><g:message code="store.storeName.label" default="Store Name" /></span>
+					<span id="storeType-label" class="property-label"><g:message code="store.storeType.label" default="Store Type" /></span>
 					
-						<span class="property-value" aria-labelledby="storeName-label"><g:fieldValue bean="${storeInstance}" field="storeName"/></span>
+						<span class="property-value" aria-labelledby="storeType-label"><g:fieldValue bean="${storeInstance}" field="storeType"/></span>
 					
 				</li>
 				</g:if>
@@ -57,6 +59,9 @@
 					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 				</fieldset>
 			</g:form>
+			
+			<g:link controller="Product" action="list" id="${storeInstance.id}">Store Products</g:link>
+			
 		</div>
 	</body>
 </html>

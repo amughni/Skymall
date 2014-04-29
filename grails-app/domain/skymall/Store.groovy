@@ -1,12 +1,12 @@
 package skymall
 
 class Store {
-
-	String storeID
-	String storeName
-	String location
 	
-    static constraints = {
-		storeID(blank:false, unique: true)
-    }
+	String storeName
+	String location	
+	String storeType
+	
+	static constraints = {
+		storeName(blank:false, unique: true)
+	}
 }

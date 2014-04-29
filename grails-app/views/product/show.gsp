@@ -23,11 +23,22 @@
 			</g:if>
 			<ol class="property-list product">
 			
-				<g:if test="${productInstance?.prodID}">
+				<g:if test="${productInstance?.prodName}">
 				<li class="fieldcontain">
-					<span id="prodID-label" class="property-label"><g:message code="product.prodID.label" default="Prod ID" /></span>
+					<span id="prodName-label" class="property-label"><g:message code="product.prodName.label" default="Prod Name" /></span>
 					
-						<span class="property-value" aria-labelledby="prodID-label"><g:fieldValue bean="${productInstance}" field="prodID"/></span>
+						<span class="property-value" aria-labelledby="prodName-label"><g:fieldValue bean="${productInstance}" field="prodName"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${productInstance?.cart}">
+				<li class="fieldcontain">
+					<span id="cart-label" class="property-label"><g:message code="product.cart.label" default="Cart" /></span>
+					
+						<g:each in="${productInstance.cart}" var="c">
+						<span class="property-value" aria-labelledby="cart-label"><g:link controller="cart" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></span>
+						</g:each>
 					
 				</li>
 				</g:if>
@@ -55,15 +66,6 @@
 					<span id="price-label" class="property-label"><g:message code="product.price.label" default="Price" /></span>
 					
 						<span class="property-value" aria-labelledby="price-label"><g:fieldValue bean="${productInstance}" field="price"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${productInstance?.prodName}">
-				<li class="fieldcontain">
-					<span id="prodName-label" class="property-label"><g:message code="product.prodName.label" default="Prod Name" /></span>
-					
-						<span class="property-value" aria-labelledby="prodName-label"><g:fieldValue bean="${productInstance}" field="prodName"/></span>
 					
 				</li>
 				</g:if>

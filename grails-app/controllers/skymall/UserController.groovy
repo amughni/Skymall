@@ -5,6 +5,6 @@ class UserController {
 	def index() { }
 	
 	def login(){
-		redirect(controller:'Store', action:'list')
+		redirect(controller:'Store', action:'index')
 	}
 }

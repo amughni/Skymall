@@ -4,6 +4,7 @@ class User {
 
 	String userName
 	String password
+	String userRole
 	
     static constraints = {
 		userName(blank: false)

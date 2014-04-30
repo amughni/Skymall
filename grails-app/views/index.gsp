@@ -18,7 +18,15 @@
 				</span>
 			</div>
 			
+			
 		</g:form>
+		
+		<div class="buttons">
+				<span class="formButton"> <g:link controller="user" action="create">Register</g:link>
+				</span>
+			</div>
+
+
 
 	</div>
 </body>

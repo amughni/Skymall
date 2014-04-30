@@ -26,9 +26,12 @@
 			</ul>
 			</g:hasErrors>
 			
-			<g:set var="${apparelInstance.storeID}" value="${flash.storeID}"/>
-			
 			<g:form url="[resource:apparelInstance, action:'save']" >
+			
+				<g:if test="${storeID == null}">
+					<g:set var="storeID" value="${flash.storeID}" />
+				</g:if>
+				
 				<fieldset class="form">
 					<g:render template="form"/>
 				</fieldset>

@@ -5,20 +5,19 @@ class ApparelController {
     def index() { }
 	
 	def newApparel(){
-		render params.storeID
-		//render(view: "create", model: [storeID: params.storeID])
-		//flash.storeID = params.storeID
+		//render params.id
+		flash.storeID = params.id
+		render(view: "create")
+		//flash.storeID = params.id
 		//render(view: "create")
 	}
 	
 	def list(){
-		//render params.storeID
-		def apparelList = Apparel.findAllByStoreID(params.storeID)
-		flash.storeID = params.storeID
+		//render params.id
+		def apparelList = Apparel.findAllByStoreID(params.id)
+		flash.storeID = params.id
 		
-		//render apparelList.size()		
-		//render apparel.prodName
-		render(view:"index", model: [apparelInstanceList: apparelList, id: params.storeID])	
+		render(view:"index", model: [apparelInstanceList: apparelList])
 	}
 	
 	def scaffold = Apparel

@@ -14,6 +14,13 @@
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+				
+				<g:if test="${storeInstance?.storeType == 'Apparel'}">
+  					<g:link controller="Apparel" action="list" id="${storeInstance.id}" >Store Products</g:link>
+				</g:if>
+				<g:elseif>
+  					<g:link controller="Electronics" action="list" id="${storeInstance.id}" >Store Products</g:link>
+				</g:elseif>
 			</ul>
 		</div>
 		<div id="show-store" class="content scaffold-show" role="main">
@@ -62,12 +69,7 @@
 			
 			
 			
-			<g:if test="${storeInstance?.storeType == 'Apparel'}">
-  				<g:link controller="Apparel" action="list" id="${storeInstance.id}">Store Products</g:link>
-			</g:if>
-			<g:else>
-  				
-			</g:else>
+			
 			
 		</div>
 	</body>

@@ -1,3 +1,8 @@
+<%@ page 
+import="skymall.Store"
+import="skymall.StoreTypes"
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +23,8 @@
 					<g:message code="default.list.label" args="[entityName]" />
 				</g:link></li>
 		</ul>
-	</div>
+	</div>	
+
 	<div id="create-store" class="content scaffold-create" role="main">
 		<h1>
 			<g:message code="default.create.label" args="[entityName]" />
@@ -37,6 +43,7 @@
 				</g:eachError>
 			</ul>
 		</g:hasErrors>
+		
 		<g:form url="[resource:storeInstance, action:'save']">
 			<fieldset class="form">
 				<g:render template="form" />	
@@ -46,6 +53,7 @@
 				<g:submitButton name="create" class="save"
 					value="${message(code: 'default.button.create.label', default: 'Create')}" />
 			</fieldset>
+			
 		</g:form>
 	</div>
 </body>

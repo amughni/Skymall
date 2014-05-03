@@ -1,5 +1,7 @@
 package skymall
 
+import grails.transaction.Transactional;
+
 class BookController {
 
 	def list(){
@@ -9,6 +11,45 @@ class BookController {
 		
 		render(view:"index", model: [bookInstanceList: bookList])
 	}
+	
+	def  create(){
+		def storeid = flash.storeID
+		respond new Book(storeID:storeid);
+	}
+	
+	@Transactional
+	def save(Book bookInstance) {
+		if (bookInstance == null) {
+			notFound()
+			return
+		}
+		
+		if (bookInstance.hasErrors()) {
+			respond bookInstance.errors, view:'create'
+			return
+		}
+
+		bookInstance.save flush:true
+
+		request.withFormat {
+			form multipartForm {
+				flash.message = message(code: 'default.created.message', args: [message(code: 'bookInstance.label', default: 'User'), bookInstance.id])
+				redirect bookInstance
+			}
+			'*' { respond bookInstance, [status: CREATED] }
+		}
+	}
+	
+	protected void notFound() {
+		request.withFormat {
+			form multipartForm {
+				flash.message = message(code: 'default.not.found.message', args: [message(code: 'userInstance.label', default: 'User'), params.id])
+				redirect action: "index", method: "GET"
+			}
+			'*'{ render status: NOT_FOUND }
+		}
+	}
+
 	
     def index() { }
 	

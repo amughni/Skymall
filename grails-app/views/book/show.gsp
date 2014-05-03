@@ -122,6 +122,39 @@
 					
 				</li>
 				</g:if>
+				
+				<g:if test="${bookInstance?.expandableVariantList}">
+				<table>
+					<thead>
+						<tr>
+
+							<g:sortableColumn property="name"
+								title="${message(code: 'apparel.name.label', default: 'Name')}" />
+
+							<g:sortableColumn property="value"
+								title="${message(code: 'apparel.value.label', default: 'Value')}" />							
+
+						</tr>
+					</thead>
+					<tbody>
+						<g:each in="${bookInstance?.expandableVariantList}" status="i"
+							var="variantInstance">
+							<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+
+								<td>
+									${fieldValue(bean: variantInstance, field: "name")}
+								</td>
+
+								<td>
+									${fieldValue(bean: variantInstance, field: "value")}
+								</td>								
+
+							</tr>
+						</g:each>
+					</tbody>
+				</table>
+			</g:if>
+				
 			
 			</ol>
 			<g:form url="[resource:bookInstance, action:'delete']" method="DELETE">

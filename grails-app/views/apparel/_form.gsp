@@ -65,7 +65,7 @@
 
 <div class="fieldcontain"
 	${hasErrors(bean: apparelInstance, field: 'variants', 'error')}>
-	<label for="count"> <g:message code="apparel.variants.label"
+	<label for="variants"> <g:message code="apparel.variants.label"
 			default="Variants" /> <span class="required-indicator">*</span>
 	</label>
 	<g:render template="variants"

@@ -77,6 +77,6 @@ grails.project.dependency.resolution = {
         //compile ":handlebars-asset-pipeline:1.3.0.1"
 		
 		compile ":rest:0.8"
-		compile ":modalbox:0.4"
+		//compile ":modalbox:0.4"
     }
 }

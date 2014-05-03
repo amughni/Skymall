@@ -70,8 +70,17 @@ import="skymall.Category" %>
 		<g:message code="book.prodCount.label" default="Prod Count" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field name="prodCount" type="number" value="${bookInstance.prodCount}" required=""/>
+	<g:field name="prodCount" type="number" value="${bookInstance?.prodCount}" required=""/>
 
 </div>
 
-<g:hiddenField name="storeID" value="${flash.storeID}" />
+<div class="fieldcontain"
+	${hasErrors(bean: bookInstance, field: 'variants', 'error')}>
+	<label for="variants"> <g:message code="book.variants.label"
+			default="Variants" /> <span class="required-indicator">*</span>
+	</label>
+	<g:render template="variants"
+		model="['bookInstance':bookInstance]" />
+</div>
+
+<g:hiddenField name="storeID" value="${bookInstance?.storeID}" />

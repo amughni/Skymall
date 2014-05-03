@@ -13,11 +13,6 @@ class ApparelController {
 		def apparelList = Apparel.findAllByStoreID(params.id)
 		flash.storeID = params.id
 		
-		for(a in apparelList){
-			println a
-			println a.variants
-		}
-		
 		render(view:"index", model: [apparelInstanceList: apparelList])
 	}
 	
@@ -33,10 +28,6 @@ class ApparelController {
             notFound()
             return
         }
-		else{
-			println apparelInstance
-			println apparelInstance.expandableVariantList;
-		}
 
         if (apparelInstance.hasErrors()) {
             respond apparelInstance.errors, view:'create'

@@ -43,4 +43,22 @@ class ProductController {
 			redirect(controller: 'Apparel', action: 'newApparel', params: [storeID: params.id])
 		}*/
 	}
+	
+	def update = {
+		def productInstance = Product.get( params.id )
+		if(productInstance) {
+			if(params.version) {
+				// ... version locking stuff
+			}
+
+			productInstance.properties = params
+			def _toBeDeleted = productInstance.variants.findAll {
+				it._deleted
+			}
+			
+			if (_toBeDeleted) {
+				productInstance.variants.removeAll(_toBeDeleted)
+			}
+		}
+	}
 }

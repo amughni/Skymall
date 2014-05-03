@@ -9,6 +9,7 @@
 
 </div>
 
+<g:hiddenField name="storeID" value="1" />
 
 <tr class="prop">
 	<td valign="top" class="name"><label for="bookSubCategories">SubCategories:</label></td>

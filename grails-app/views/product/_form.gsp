@@ -56,3 +56,12 @@
 
 </div>
 
+<tr class="prop">
+	<td valign="top" class="name"><label for="variant">Variant Features</label></td>
+	<td valign="top"
+		class="value ${hasErrors(bean:productInstance, field:'variants','errors')}">
+		<g:render template="variants"
+			model="['variantInstance':variantInstance]" />
+	</td>
+</tr>
+

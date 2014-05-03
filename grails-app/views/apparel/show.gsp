@@ -15,15 +15,16 @@
 		<ul>
 			<li><a class="home" href="${createLink(uri: '/')}"><g:message
 						code="default.home.label" /></a></li>
-						
+
 			<g:if test="${storeID == null}">
-					<g:set var="storeID" value="${apparelInstance?.storeID}" />
+				<g:set var="storeID" value="${apparelInstance?.storeID}" />
 			</g:if>
-				
-			<li><g:link controller="apparel" action="list" id="${apparelInstance?.storeID}">
+
+			<li><g:link controller="apparel" action="list"
+					id="${apparelInstance?.storeID}">
 					<g:message code="default.list.label" args="[entityName]" />
 				</g:link></li>
-				
+
 			<li><g:link class="create" action="create">
 					<g:message code="default.new.label" args="[entityName]" />
 				</g:link></li>
@@ -97,7 +98,40 @@
 							code="apparel.apparelSize.label" default="Size" /></span> <span
 					class="property-value" aria-labelledby="size-label"><g:fieldValue
 							bean="${apparelInstance}" field="apparelSize" /></span></li>
-			</g:if>			
+			</g:if>
+
+			<g:if test="${apparelInstance?.expandableVariantList}">
+				<table>
+					<thead>
+						<tr>
+
+							<g:sortableColumn property="name"
+								title="${message(code: 'apparel.name.label', default: 'Name')}" />
+
+							<g:sortableColumn property="value"
+								title="${message(code: 'apparel.value.label', default: 'Value')}" />							
+
+						</tr>
+					</thead>
+					<tbody>
+						<g:each in="${apparelInstance?.expandableVariantList}" status="i"
+							var="variantInstance">
+							<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+
+								<td>
+									${fieldValue(bean: variantInstance, field: "name")}
+								</td>
+
+								<td>
+									${fieldValue(bean: variantInstance, field: "value")}
+								</td>								
+
+							</tr>
+						</g:each>
+					</tbody>
+				</table>
+			</g:if>
+
 
 		</ol>
 		<g:form url="[resource:apparelInstance, action:'delete']"

@@ -30,10 +30,16 @@ import="skymall.Category" %>
 	<g:select id="category" name="category"
 		from="${Category.getCategoryNames()}"
 		value="${bookInstance?.category}"
+		
+		onchange="${remoteFunction(
+            controller:'book', 
+            action:'ajaxGetSubCategory', 
+            params:'\'cat=\' + escape(this.value)', 
+            onComplete:'updateSubCategory(e)')}"
 		noSelection="['':'-Choose a category for book']" ></g:select>
 		
 	<g:select id="subCategory" name="subCategory"
-		from="${[Category.getCategoryNames()]}"
+		from="${[Category.getSubCategoryNames(${bookInstance?.category})]}"
 		value="${bookInstance?.subCategory}"
 		noSelection="['':'-Choose a subcategory']"></g:select>
 </div>

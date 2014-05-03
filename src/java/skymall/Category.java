@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-
 public enum Category {
 
 	FICTION("Fiction & Literature", new String[] {
@@ -38,7 +37,7 @@ public enum Category {
 			"Junot Diaz" });
 
 	final String desc;
-	
+
 	List<String> subCats = new ArrayList<String>();
 
 	private Category(String desc, String[] subCats) {
@@ -59,36 +58,38 @@ public enum Category {
 		return desc;
 	}
 
-	/*public static enum SubCategory {
-		FICTION("B"), CHILDREN("Electronics"), AUTOMOBILE("Automobile"), BOOKS(
-				"Books");
-		final String desc;
+	/*
+	 * public static enum SubCategory { FICTION("B"), CHILDREN("Electronics"),
+	 * AUTOMOBILE("Automobile"), BOOKS( "Books"); final String desc;
+	 * 
+	 * private SubCategory(String desc) { this.desc = desc; }
+	 * 
+	 * @Override public String toString() { return desc; } }
+	 */
 
-		private SubCategory(String desc) {
-			this.desc = desc;
-		}
-
-		@Override
-		public String toString() {
-			return desc;
-		}
-	}*/
-	
-	public static String[] getCategoryNames(){
+	public static String[] getCategoryNames() {
 		String[] typesName = new String[Category.values().length];
-		
+
 		int i = 0;
 		for (Category c : Category.values()) {
 			typesName[i] = c.desc;
 			i++;
 		}
-		
+
 		return typesName;
 	}
-	
-	public static String[] getSubCategoryNames(){
-		String[] typesName = new String[] {"subcat1", "subcat2"};
-		return typesName;
+
+	public static String[] getSubCategoryNames(String cat) {
+		String[] subCatList = new String[] {};
+		if (cat != null) {
+			for (Category c : Category.values()) {
+				if (c.desc.equals(cat)) {
+					subCatList = (String[]) c.subCats.toArray();
+					break;
+				}
+			}
+		}
+		return subCatList;
 	}
 
 }

@@ -1,6 +1,4 @@
-<%@ page 
-import="skymall.Category"
-%>
+<%@ page import="skymall.Category"%>
 
 <!DOCTYPE html>
 <html>
@@ -9,7 +7,10 @@ import="skymall.Category"
 
 <g:set var="entityName"
 	value="${message(code: 'book.label', default: 'Book')}" />
-	<g:javascript src="jquery-1.3.2.min.js" />
+
+<g:javascript src="jquery-1.3.2.min.js" />
+<g:javascript library="prototype" />
+
 <title><g:message code="default.create.label"
 		args="[entityName]" /></title>
 </head>

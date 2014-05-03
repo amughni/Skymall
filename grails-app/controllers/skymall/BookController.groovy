@@ -1,5 +1,8 @@
 package skymall
 
+import java.util.Locale.Category;
+
+import grails.converters.JSON
 import grails.transaction.Transactional;
 
 class BookController {
@@ -15,6 +18,11 @@ class BookController {
 	def  create(){
 		def storeid = flash.storeID
 		respond new Book(storeID:storeid);
+	}
+	
+	def ajaxGetSubCategory = {
+		def subCats = Category.getSubCategoryNames(params.cat);
+		render subCats as JSON
 	}
 	
 	@Transactional

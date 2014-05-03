@@ -1,5 +1,5 @@
 <%@ page import="skymall.Book" 
-import="skymall.Types" %>
+import="skymall.Category" %>
 
 
 
@@ -21,23 +21,23 @@ import="skymall.Types" %>
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: bookInstance, field: 'cart', 'error')} ">
-	<label for="cart">
-		<g:message code="book.cart.label" default="Cart" />
-		
-	</label>
-	
+<div
+	class="fieldcontain ${hasErrors(bean: bookInstance, field: 'category', 'error')} ">
+	<label for="category"> <g:message code="book.category.label"
+			default="Category" />
 
+	</label>
+	<g:select id="category" name="category"
+		from="${Category.getCategoryNames()}"
+		value="${bookInstance?.category}"
+		noSelection="['':'-Choose a category for book']" ></g:select>
+		
+	<g:select id="subCategory" name="subCategory"
+		from="${[Category.getCategoryNames()]}"
+		value="${bookInstance?.subCategory}"
+		noSelection="['':'-Choose a subcategory']"></g:select>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: bookInstance, field: 'category', 'error')} ">
-	<label for="category">
-		<g:message code="book.category.label" default="Category" />
-		
-	</label>
-	<g:textField name="category" value="${bookInstance?.category}"/>
-
-</div>
 
 <div class="fieldcontain ${hasErrors(bean: bookInstance, field: 'description', 'error')} ">
 	<label for="description">
@@ -62,8 +62,7 @@ import="skymall.Types" %>
 		<g:message code="book.price.label" default="Price" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field name="price" value="${fieldValue(bean: bookInstance, field: 'price')}" required=""/>
-
+	<g:textField name="price" value="${fieldValue(bean: bookInstance, field: 'price')}" required=""/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: bookInstance, field: 'prodCount', 'error')} required">
@@ -75,20 +74,4 @@ import="skymall.Types" %>
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: bookInstance, field: 'storeID', 'error')} ">
-	<label for="storeID">
-		<g:message code="book.storeID.label" default="Store ID" />
-		
-	</label>
-	<g:textField name="storeID" value="${bookInstance?.storeID}"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: bookInstance, field: 'subCategory', 'error')} ">
-	<label for="subCategory">
-		<g:message code="book.subCategory.label" default="Sub Category" />
-		
-	</label>
-	<g:textField name="subCategory" value="${bookInstance?.subCategory}"/>
-
-</div>
+<g:hiddenField name="storeID" value="${flash.storeID}" />

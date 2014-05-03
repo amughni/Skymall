@@ -12,7 +12,11 @@
 	<a href="#list-store" class="skip" tabindex="-1"><g:message
 			code="default.link.skip.label" default="Skip to content&hellip;" /></a>
 	<div class="nav" role="navigation">
-		<ul>
+		<ul>		
+			<g:if test="${storeID == null}">
+				<g:set var="storeID" value="${flash.storeID}" />
+			</g:if>
+			
 			<li><a class="home" href="${createLink(uri: '/')}"><g:message
 						code="default.home.label" /></a></li>
 			<li><g:link class="create" action="create">

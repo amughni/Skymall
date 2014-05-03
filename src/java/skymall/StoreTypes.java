@@ -14,7 +14,7 @@ public enum StoreTypes {
 		return desc;
 	}
 	
-	public static String[]  getTypeNames(){
+	public static String[] getTypeNames(){
 		String[] typesName = new String[StoreTypes.values().length];
 		
 		int i = 0;

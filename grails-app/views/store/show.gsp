@@ -23,6 +23,9 @@ import="skymall.StoreTypes" %>
 				<g:elseif test="${storeInstance?.storeType == StoreTypes.ELECTRONICS.toString()}">
   					<g:link controller="Electronics" action="list" id="${storeInstance.id}" >Product List</g:link>
 				</g:elseif>
+				<g:elseif test="${storeInstance?.storeType == StoreTypes.BOOKS.toString()}">
+  					<g:link controller="Book" action="list" id="${storeInstance.id}" >Product List</g:link>
+				</g:elseif>
 			</ul>
 		</div>
 		<div id="show-store" class="content scaffold-show" role="main">

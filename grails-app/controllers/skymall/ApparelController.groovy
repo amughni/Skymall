@@ -50,6 +50,11 @@ class ApparelController {
 			redirect(action:list)
 		}
 	}
+	
+	def add(){
+		def apparelInstance = Apparel.get( params.id )
+		
+	}
 	//	@Transactional
 	//	def save(Apparel apparelInstance) {
 	//        if (apparelInstance == null) {

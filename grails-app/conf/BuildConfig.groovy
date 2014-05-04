@@ -79,6 +79,7 @@ grails.project.dependency.resolution = {
 		compile ":rest:0.8"
 		compile ":ajaxdependancyselection:0.35"
 		compile ":jquery-ui:1.10.3"
+		compile ":shopping-cart:0.8.2"
 		//compile ":modalbox:0.4"
     }
 }

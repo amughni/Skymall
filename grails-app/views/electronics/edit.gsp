@@ -4,6 +4,7 @@
 	<head>
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'electronics.label', default: 'Electronics')}" />
+		<g:javascript src="jquery-1.3.2.min.js" />
 		<title><g:message code="default.edit.label" args="[entityName]" /></title>
 	</head>
 	<body>

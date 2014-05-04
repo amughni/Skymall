@@ -1,6 +1,8 @@
 <%@ page import="skymall.Electronics" %>
 
-
+<g:if test="${storeID == null}">
+	<g:set var="storeID" value="${electronicsInstance?.storeID}" scope="flash" />
+</g:if>
 
 <div class="fieldcontain ${hasErrors(bean: electronicsInstance, field: 'prodName', 'error')} required">
 	<label for="prodName">
@@ -47,13 +49,14 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: electronicsInstance, field: 'price', 'error')} required">
-	<label for="price">
-		<g:message code="electronics.price.label" default="Price" />
-		<span class="required-indicator">*</span>
+<div
+	class="fieldcontain ${hasErrors(bean: electronicsInstance, field: 'price', 'error')} required">
+	<label for="price"> <g:message code="electronics.price.label"
+			default="Price" /> <span class="required-indicator">*</span>
 	</label>
-	<g:field name="price" value="${fieldValue(bean: electronicsInstance, field: 'price')}" required=""/>
-
+	<g:textField name="price"
+		value="${fieldValue(bean: electronicsInstance, field: 'price')}"
+		required="" />
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: electronicsInstance, field: 'prodCount', 'error')} required">
@@ -65,21 +68,13 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: electronicsInstance, field: 'variants', 'error')} ">
-	<label for="variants">
-		<g:message code="electronics.variants.label" default="Variants" />
-		
+<div class="fieldcontain"
+	${hasErrors(bean: electronicsInstance, field: 'variants', 'error')}>
+	<label for="variants"> <g:message code="electronics.variants.label"
+			default="" /> 
 	</label>
-	
-<ul class="one-to-many">
-<g:each in="${electronicsInstance?.variants?}" var="v">
-    <li><g:link controller="variant" action="show" id="${v.id}">${v?.encodeAsHTML()}</g:link></li>
-</g:each>
-<li class="add">
-<g:link controller="variant" action="create" params="['electronics.id': electronicsInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'variant.label', default: 'Variant')])}</g:link>
-</li>
-</ul>
-
-
+	<g:render template="variants"
+		model="['electronicsInstance':electronicsInstance]" />
 </div>
 
+<g:hiddenField name="storeID" value="${electronicsInstance?.storeID}" />

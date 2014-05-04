@@ -1,28 +1,29 @@
-<%@ page import="skymall.Book" 
-import="skymall.Category" %>
-
-
-
-<div class="fieldcontain ${hasErrors(bean: bookInstance, field: 'prodName', 'error')} required">
-	<label for="prodName">
-		<g:message code="book.prodName.label" default="Prod Name" />
-		<span class="required-indicator">*</span>
+<%@ page import="skymall.Book" import="skymall.Category"%>
+<g:if test="${storeID == null}">
+	<g:set var="storeID" value="${flash.storeID}" scope="flash" />
+</g:if>
+<div
+	class="fieldcontain ${hasErrors(bean: bookInstance, field: 'prodName', 'error')} required">
+	<label for="prodName"> <g:message code="book.prodName.label"
+			default="Prod Name" /> <span class="required-indicator">*</span>
 	</label>
-	<g:textField name="prodName" required="" value="${bookInstance?.prodName}"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: bookInstance, field: 'author', 'error')} ">
-	<label for="author">
-		<g:message code="book.author.label" default="Author" />
-		
-	</label>
-	<g:textField name="author" value="${bookInstance?.author}"/>
+	<g:textField name="prodName" required=""
+		value="${bookInstance?.prodName}" />
 
 </div>
 
 <div
-	class="fieldcontain ${hasErrors(bean: bookInstance, field: 'category', 'error')} ">
+	class="fieldcontain ${hasErrors(bean: bookInstance, field: 'author', 'error')} ">
+	<label for="author"> <g:message code="book.author.label"
+			default="Author" />
+
+	</label>
+	<g:textField name="author" value="${bookInstance?.author}" />
+
+</div>
+
+<div
+	class="fieldcontain ${hasErrors(bean: bookInstance, field: 'category', 'error')}">
 	<label for="category"> <g:message code="book.category.label"
 			default="Category" />
 
@@ -30,63 +31,108 @@ import="skymall.Category" %>
 	<g:select id="category" name="category"
 		from="${Category.getCategoryNames()}"
 		value="${bookInstance?.category}"
-		
 		onchange="${remoteFunction(
             controller:'book', 
             action:'ajaxGetSubCategory', 
             params:'\'cat=\' + escape(this.value)', 
-            onComplete:'updateSubCategory(e)')}"
-		noSelection="['':'-Choose a category for book']" ></g:select>
-		
-	<g:select id="subCategory" name="subCategory"
-		from="${[Category.getSubCategoryNames(${bookInstance?.category})]}"
+            onSuccess:'updateSubCategory(data)')}"
+		noSelection="['':'-Choose a category for book']"></g:select>
+
+	<g:if test="${bookInstance?.category != null}">
+		<g:set var="category" value="${bookInstance?.category}" scope="flash" />
+	</g:if>
+
+	<g:select id="subCategory" name="subCategory" from="${bookInstance?.subCategories}"
 		value="${bookInstance?.subCategory}"
 		noSelection="['':'-Choose a subcategory']"></g:select>
-</div>
-
-
-<div class="fieldcontain ${hasErrors(bean: bookInstance, field: 'description', 'error')} ">
-	<label for="description">
-		<g:message code="book.description.label" default="Description" />
+	<g:javascript>
+  		function updateSubCategory(e) 
+		{  
+			if (e != null) 
+			{ 
+			    var scs = e.split(",")
+				var rselect = document.getElementById('subCategory')
 		
-	</label>
-	<g:textField name="description" value="${bookInstance?.description}"/>
+				// Clear all previous options 
+				var l = rselect.length
+				while (l > 0)
+				 { 
+					 l--
+					  rselect.remove(l) 
+				 }
+				
+				// Rebuild the select
+				 for (var i=0; i < scs.length; i++) 
+				 {
+					 var sc = scs[i] 
+					 var opt = document.createElement('option'); 
+					 opt.text = sc 
+					 if (i == 0){
+					 	opt.value = ''
+					 }else{
+					 	opt.value = sc
+					 }
+					 try 
+					 { 
+						 rselect.add(opt, null) // standards compliant; doesn't work in IE 
+					 }
+					 catch(ex) 
+					{
+						 rselect.add(opt) // IE only
+					}
+				 }
+			  }
+		  }
+	</g:javascript>
+
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: bookInstance, field: 'isbn', 'error')} ">
-	<label for="isbn">
-		<g:message code="book.isbn.label" default="Isbn" />
-		
+<div
+	class="fieldcontain ${hasErrors(bean: bookInstance, field: 'description', 'error')} ">
+	<label for="description"> <g:message
+			code="book.description.label" default="Description" />
+
 	</label>
-	<g:textField name="isbn" value="${bookInstance?.isbn}"/>
+	<g:textField name="description" value="${bookInstance?.description}" />
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: bookInstance, field: 'price', 'error')} required">
-	<label for="price">
-		<g:message code="book.price.label" default="Price" />
-		<span class="required-indicator">*</span>
+<div
+	class="fieldcontain ${hasErrors(bean: bookInstance, field: 'isbn', 'error')} ">
+	<label for="isbn"> <g:message code="book.isbn.label"
+			default="Isbn" />
+
 	</label>
-	<g:textField name="price" value="${fieldValue(bean: bookInstance, field: 'price')}" required=""/>
+	<g:textField name="isbn" value="${bookInstance?.isbn}" />
+
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: bookInstance, field: 'prodCount', 'error')} required">
-	<label for="prodCount">
-		<g:message code="book.prodCount.label" default="Prod Count" />
-		<span class="required-indicator">*</span>
+<div
+	class="fieldcontain ${hasErrors(bean: bookInstance, field: 'price', 'error')} required">
+	<label for="price"> <g:message code="book.price.label"
+			default="Price" /> <span class="required-indicator">*</span>
 	</label>
-	<g:field name="prodCount" type="number" value="${bookInstance?.prodCount}" required=""/>
+	<g:textField name="price"
+		value="${fieldValue(bean: bookInstance, field: 'price')}" required="" />
+</div>
+
+<div
+	class="fieldcontain ${hasErrors(bean: bookInstance, field: 'prodCount', 'error')} required">
+	<label for="prodCount"> <g:message code="book.prodCount.label"
+			default="Prod Count" /> <span class="required-indicator">*</span>
+	</label>
+	<g:field name="prodCount" type="number"
+		value="${bookInstance?.prodCount}" required="" />
 
 </div>
 
 <div class="fieldcontain"
 	${hasErrors(bean: bookInstance, field: 'variants', 'error')}>
 	<label for="variants"> <g:message code="book.variants.label"
-			default="Variants" /> <span class="required-indicator">*</span>
+			default="" />
 	</label>
-	<g:render template="variants"
-		model="['bookInstance':bookInstance]" />
+	<g:render template="variants" model="['bookInstance':bookInstance]" />
 </div>
 
 <g:hiddenField name="storeID" value="${bookInstance?.storeID}" />

@@ -14,7 +14,7 @@
 	<div class="nav" role="navigation">
 		<ul>
 			<g:if test="${storeID == null}">
-				<g:set var="storeID" value="${flash.storeID}" />
+				<g:set var="storeID" value="${flash.storeID}" scope="flash" />
 			</g:if>
 			
 			<li><a class="home" href="${createLink(uri: '/')}"><g:message

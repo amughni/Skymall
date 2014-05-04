@@ -1,6 +1,8 @@
 <%@ page import="skymall.Apparel"%>
 
-
+<g:if test="${storeID == null}">
+	<g:set var="storeID" value="${apparelInstance?.storeID}" scope="flash" />
+</g:if>
 
 <div
 	class="fieldcontain ${hasErrors(bean: apparelInstance, field: 'prodName', 'error')} required">
@@ -66,10 +68,10 @@
 <div class="fieldcontain"
 	${hasErrors(bean: apparelInstance, field: 'variants', 'error')}>
 	<label for="variants"> <g:message code="apparel.variants.label"
-			default="Variants" /> <span class="required-indicator">*</span>
+			default="" /> 
 	</label>
 	<g:render template="variants"
 		model="['apparelInstance':apparelInstance]" />
 </div>
 
-<g:hiddenField name="storeID" value="${flash.storeID}" />
+<g:hiddenField name="storeID" value="${apparelInstance?.storeID}" />

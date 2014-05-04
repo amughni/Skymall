@@ -14,7 +14,7 @@
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 				
 				<g:if test="${storeID == null}">
-					<g:set var="storeID" value="${bookInstance?.storeID}" />
+					<g:set var="storeID" value="${bookInstance?.storeID}" scope="flash"/>
 				</g:if>
 				
 				<li><g:link controller="book" action="list" id="${bookInstance?.storeID}">
@@ -123,21 +123,21 @@
 				</li>
 				</g:if>
 				
-				<g:if test="${bookInstance?.expandableVariantList}">
+				<g:if test="${bookInstance?.variants}">
 				<table>
 					<thead>
 						<tr>
 
 							<g:sortableColumn property="name"
-								title="${message(code: 'apparel.name.label', default: 'Name')}" />
+								title="${message(code: 'apparel.name.label', default: 'Details')}" />
 
 							<g:sortableColumn property="value"
-								title="${message(code: 'apparel.value.label', default: 'Value')}" />							
+								title="${message(code: 'apparel.value.label', default: 'Description')}" />							
 
 						</tr>
 					</thead>
 					<tbody>
-						<g:each in="${bookInstance?.expandableVariantList}" status="i"
+						<g:each in="${bookInstance?.variants}" status="i"
 							var="variantInstance">
 							<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 

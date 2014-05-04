@@ -31,9 +31,9 @@ class Product implements Serializable{
 		variants cascade:"all,delete-orphan"
 	}
 	
-	def getExpandableVariantList() {
-		return LazyList.decorate(variants, FactoryUtils.instantiateFactory(Variant.class))
-	}
+//	def getExpandableVariantList() {
+//		return LazyList.decorate(variants, FactoryUtils.instantiateFactory(Variant.class))
+//	}
 	
 	boolean equals(other) {
 		if (!(other instanceof Product)) {

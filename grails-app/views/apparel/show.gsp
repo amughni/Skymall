@@ -17,7 +17,8 @@
 						code="default.home.label" /></a></li>
 
 			<g:if test="${storeID == null}">
-				<g:set var="storeID" value="${apparelInstance?.storeID}" />
+				<g:set var="storeID" value="${apparelInstance?.storeID}"
+					scope="flash" />
 			</g:if>
 
 			<li><g:link controller="apparel" action="list"
@@ -100,31 +101,30 @@
 							bean="${apparelInstance}" field="apparelSize" /></span></li>
 			</g:if>
 
-			<g:if test="${apparelInstance?.expandableVariantList}">
+			<g:if test="${apparelInstance?.variants}">
 				<table>
 					<thead>
 						<tr>
 
 							<g:sortableColumn property="name"
-								title="${message(code: 'apparel.name.label', default: 'Name')}" />
+								title="${message(code: 'apparel.name.label', default: 'Apparel Feature')}" />
 
 							<g:sortableColumn property="value"
-								title="${message(code: 'apparel.value.label', default: 'Value')}" />							
+								title="${message(code: 'apparel.value.label', default: 'Description')}" />
 
 						</tr>
 					</thead>
 					<tbody>
-						<g:each in="${apparelInstance?.expandableVariantList}" status="i"
+						<g:each in="${apparelInstance?.variants}" status="i"
 							var="variantInstance">
 							<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-
 								<td>
 									${fieldValue(bean: variantInstance, field: "name")}
 								</td>
 
 								<td>
 									${fieldValue(bean: variantInstance, field: "value")}
-								</td>								
+								</td>
 
 							</tr>
 						</g:each>

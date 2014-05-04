@@ -9,7 +9,6 @@
 	value="${message(code: 'book.label', default: 'Book')}" />
 
 <g:javascript src="jquery-1.3.2.min.js" />
-<g:javascript library="prototype" />
 
 <title><g:message code="default.create.label"
 		args="[entityName]" /></title>
@@ -21,7 +20,7 @@
 		<ul>
 			<li><a class="home" href="${createLink(uri: '/')}"><g:message
 						code="default.home.label" /></a></li>
-			<li><g:link class="list" action="index">
+			<li><g:link class="list" action="list" id="${flash.storeID}">
 					<g:message code="default.list.label" args="[entityName]" />
 				</g:link></li>
 		</ul>
@@ -46,11 +45,9 @@
 		</g:hasErrors>
 
 		<g:form url="[resource:bookInstance, action:'save']">
-
 			<g:if test="${storeID == null}">
-				<g:set var="storeID" value="${flash.storeID}" />
+				<g:set var="storeID" value="${flash.storeID}" scope="flash" />
 			</g:if>
-
 			<fieldset class="form">
 				<g:render template="form" />
 			</fieldset>

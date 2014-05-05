@@ -50,31 +50,12 @@
 							bean="${apparelInstance}" field="prodName" /></span></li>
 			</g:if>
 
-			<g:if test="${apparelInstance?.cart}">
-				<li class="fieldcontain"><span id="cart-label"
-					class="property-label"><g:message code="apparel.cart.label"
-							default="Cart" /></span> <g:each in="${apparelInstance.cart}" var="c">
-						<span class="property-value" aria-labelledby="cart-label"><g:link
-								controller="cart" action="show" id="${c.id}">
-								${c?.encodeAsHTML()}
-							</g:link></span>
-					</g:each></li>
-			</g:if>
-
 			<g:if test="${apparelInstance?.color}">
 				<li class="fieldcontain"><span id="color-label"
 					class="property-label"><g:message code="apparel.color.label"
 							default="Color" /></span> <span class="property-value"
 					aria-labelledby="color-label"><g:fieldValue
 							bean="${apparelInstance}" field="color" /></span></li>
-			</g:if>
-
-			<g:if test="${apparelInstance?.prodCount}">
-				<li class="fieldcontain"><span id="count-label"
-					class="property-label"><g:message
-							code="apparel.prodCount.label" default="Product Count" /></span> <span
-					class="property-value" aria-labelledby="count-label"><g:fieldValue
-							bean="${apparelInstance}" field="prodCount" /></span></li>
 			</g:if>
 
 			<g:if test="${apparelInstance?.description}">

@@ -4,7 +4,9 @@ class Apparel extends Product{
 
 	String apparelSize
 	String color
-	
-    static constraints = {
-    }
+
+	static constraints = {
+		apparelSize(nullable: true)
+		color(nullable: true)
+	}
 }

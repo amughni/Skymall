@@ -15,20 +15,20 @@
 <div
 	class="fieldcontain ${hasErrors(bean: bookInstance, field: 'author', 'error')} ">
 	<label for="author"> <g:message code="book.author.label"
-			default="Author" />
+			default="Author" /><span class="required-indicator">*</span>
 
 	</label>
-	<g:textField name="author" value="${bookInstance?.author}" />
+	<g:textField name="author"  required="" value="${bookInstance?.author}" />
 
 </div>
 
 <div
 	class="fieldcontain ${hasErrors(bean: bookInstance, field: 'category', 'error')}">
 	<label for="category"> <g:message code="book.category.label"
-			default="Category" />
+			default="Category" /><span class="required-indicator">*</span>
 
 	</label>
-	<g:select id="category" name="category"
+	<g:select id="category" name="category"  required=""
 		from="${Category.getCategoryNames()}"
 		value="${bookInstance?.category}"
 		onchange="${remoteFunction(
@@ -42,7 +42,7 @@
 		<g:set var="category" value="${bookInstance?.category}" scope="flash" />
 	</g:if>
 
-	<g:select id="subCategory" name="subCategory" from="${bookInstance?.subCategories}"
+	<g:select id="subCategory" name="subCategory"  required="" from="${bookInstance?.subCategories}"
 		value="${bookInstance?.subCategory}"
 		noSelection="['':'-Choose a subcategory']"></g:select>
 	<g:javascript>
@@ -87,23 +87,12 @@
 </div>
 
 <div
-	class="fieldcontain ${hasErrors(bean: bookInstance, field: 'description', 'error')} ">
-	<label for="description"> <g:message
-			code="book.description.label" default="Description" />
-
-	</label>
-	<g:textField name="description" value="${bookInstance?.description}" />
-
-</div>
-
-<div
 	class="fieldcontain ${hasErrors(bean: bookInstance, field: 'isbn', 'error')} ">
 	<label for="isbn"> <g:message code="book.isbn.label"
-			default="Isbn" />
+			default="Isbn" /><span class="required-indicator">*</span>
 
 	</label>
-	<g:textField name="isbn" value="${bookInstance?.isbn}" />
-
+	<g:textField name="isbn"  required="" value="${bookInstance?.isbn}" />
 </div>
 
 <div
@@ -111,8 +100,18 @@
 	<label for="price"> <g:message code="book.price.label"
 			default="Price" /> <span class="required-indicator">*</span>
 	</label>
-	<g:textField name="price"
+	<g:textField name="price"  required=""
 		value="${fieldValue(bean: bookInstance, field: 'price')}" required="" />
+</div>
+
+<div
+	class="fieldcontain ${hasErrors(bean: bookInstance, field: 'description', 'error')} ">
+	<label for="description"> <g:message
+			code="book.description.label" default="Description" />
+
+	</label>
+	<g:textArea name="description" value="${bookInstance?.description}" />
+
 </div>
 
 <div class="fieldcontain"

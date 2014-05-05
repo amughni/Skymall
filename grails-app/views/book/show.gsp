@@ -96,15 +96,6 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${bookInstance?.storeID}">
-				<li class="fieldcontain">
-					<span id="storeID-label" class="property-label"><g:message code="book.storeID.label" default="Store ID" /></span>
-					
-						<span class="property-value" aria-labelledby="storeID-label"><g:fieldValue bean="${bookInstance}" field="storeID"/></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${bookInstance?.subCategory}">
 				<li class="fieldcontain">
 					<span id="subCategory-label" class="property-label"><g:message code="book.subCategory.label" default="Sub Category" /></span>

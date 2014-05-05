@@ -15,16 +15,6 @@
 </div>
 
 <div
-	class="fieldcontain ${hasErrors(bean: apparelInstance, field: 'description', 'error')} ">
-	<label for="description"> <g:message
-			code="apparel.description.label" default="Description" />
-
-	</label>
-	<g:textField name="description" value="${apparelInstance?.description}" />
-
-</div>
-
-<div
 	class="fieldcontain ${hasErrors(bean: apparelInstance, field: 'price', 'error')} required">
 	<label for="price"> <g:message code="apparel.price.label"
 			default="Price" /> <span class="required-indicator">*</span>
@@ -33,6 +23,7 @@
 		value="${fieldValue(bean: apparelInstance, field: 'price')}"
 		required="" />
 </div>
+
 
 <div
 	class="fieldcontain ${hasErrors(bean: apparelInstance, field: 'color', 'error')} ">
@@ -44,7 +35,6 @@
 
 </div>
 
-
 <div
 	class="fieldcontain ${hasErrors(bean: apparelInstance, field: 'apparelSize', 'error')} ">
 	<label for="size"> <g:message code="apparel.apparelSize.label"
@@ -52,6 +42,16 @@
 
 	</label>
 	<g:textField name="apparelSize" value="${apparelInstance?.apparelSize}" />
+
+</div>
+
+<div
+	class="fieldcontain ${hasErrors(bean: apparelInstance, field: 'description', 'error')} ">
+	<label for="description"> <g:message
+			code="apparel.description.label" default="Description" />
+
+	</label>
+	<g:textArea name="description" value="${apparelInstance?.description}" />
 
 </div>
 

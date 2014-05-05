@@ -14,21 +14,25 @@ class Product implements Serializable{
 	String prodName
 	Double price
 	String description
+	byte[] image;
+	String imageType
+
 	List variants = new ArrayList()
-	
+
 	static belongsTo = [Store, Cart]
 	static hasMany = [cart: Cart, variants: Variant]
-	
-    static constraints = {
+
+	static constraints = {
 		prodName(blank:false, unique:true)
-		storeID(blank:false)
+		storeID(blank:false, nullable:false)
 		prodName(unique:'storeID')
-    }	
-	
-	static mapping = {
-		variants cascade:"all,delete-orphan"
+		image(nullable:true, maxSize: 1049000)
+		imageType(nullable:true)
+		description(nullable:true)
 	}
-	
+
+	static mapping = { variants cascade:"all,delete-orphan" }
+
 	boolean equals(other) {
 		if (!(other instanceof Product)) {
 			return false
@@ -42,6 +46,4 @@ class Product implements Serializable{
 		builder.append storeID
 		builder.toHashCode()
 	}
-
-
 }

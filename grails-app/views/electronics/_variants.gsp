@@ -20,8 +20,10 @@ function addChild() {
 <span onclick="addChild();"> Add Feature &nbsp;<img
 	src="${resource(dir:'images/skin', file:'database_add.png')}" />
 </span>
-<div id="childList">
-	<g:each var="variant" in="${electronicsInstance.variants}" status="i">
-		<g:render template='variant' model="['variant':variant,'i':i]" />
-	</g:each>
+<div class="fieldcontain">
+	<div id="childList">
+		<g:each var="variant" in="${electronicsInstance.variants}" status="i">
+			<g:render template='variant' model="['variant':variant,'i':i]" />
+		</g:each>
+	</div>
 </div>

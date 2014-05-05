@@ -15,7 +15,6 @@ class ElectronicsController {
 	}
 	
 	def  create(){
-		//def storeid = params.id
 		def storeid = flash.storeID
 		respond new Electronics(storeID:storeid);
 	}
@@ -32,12 +31,16 @@ class ElectronicsController {
 			respond electronicsInstance.errors, view:'create'
 			return
 		}
-
+		
+		def _toBeDeleted = electronicsInstance.variants.findAll {it._deleted}
+		if (_toBeDeleted) {
+			electronicsInstance.variants.removeAll(_toBeDeleted)
+		}
 		electronicsInstance.save flush:true
 
 		request.withFormat {
 			form multipartForm {
-				flash.message = message(code: 'default.created.message', args: [message(code: 'electronicsInstance.label', default: 'User'), electronicsInstance.id])
+				flash.message = message(code: 'default.created.message', args: [message(code: 'electronicsInstance.label', default: 'Electronic Product'), electronicsInstance.id])
 				redirect electronicsInstance
 			}
 			'*' { respond electronicsInstance, [status: CREATED] }
@@ -47,7 +50,7 @@ class ElectronicsController {
 	protected void notFound() {
 		request.withFormat {
 			form multipartForm {
-				flash.message = message(code: 'default.not.found.message', args: [message(code: 'electronicsInstance.label', default: 'Electronics'), params.id])
+				flash.message = message(code: 'default.not.found.message', args: [message(code: 'electronicsInstance.label', default: 'Electronic Product'), params.id])
 				redirect action: "index", method: "GET"
 			}
 			'*'{ render status: NOT_FOUND }

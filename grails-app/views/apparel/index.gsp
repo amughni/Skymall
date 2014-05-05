@@ -45,9 +45,6 @@
 					<g:sortableColumn property="color"
 						title="${message(code: 'apparel.color.label', default: 'Color')}" />
 
-					<g:sortableColumn property="prodCount"
-						title="${message(code: 'apparel.prodCount.label', default: 'Product Count')}" />
-
 					<g:sortableColumn property="description"
 						title="${message(code: 'apparel.description.label', default: 'Description')}" />
 
@@ -69,10 +66,6 @@
 
 						<td>
 							${fieldValue(bean: apparelInstance, field: "color")}
-						</td>
-
-						<td>
-							${fieldValue(bean: apparelInstance, field: "prodCount")}
 						</td>
 
 						<td>

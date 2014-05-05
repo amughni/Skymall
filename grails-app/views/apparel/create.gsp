@@ -4,8 +4,7 @@
 <meta name="layout" content="main">
 <g:set var="entityName"
 	value="${message(code: 'apparel.label', default: 'Apparel')}" />
-<g:javascript src="jquery-1.3.2.min.js" />
-<title><g:message code="default.create.label"
+   <title><g:message code="default.create.label"
 		args="[entityName]" /></title>
 </head>
 <body>

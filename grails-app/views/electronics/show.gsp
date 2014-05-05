@@ -50,26 +50,6 @@
 							bean="${electronicsInstance}" field="prodName" /></span></li>
 			</g:if>
 
-			<g:if test="${electronicsInstance?.storeID}">
-				<li class="fieldcontain"><span id="storeID-label"
-					class="property-label"><g:message
-							code="electronics.storeID.label" default="Store ID" /></span> <span
-					class="property-value" aria-labelledby="storeID-label"><g:fieldValue
-							bean="${electronicsInstance}" field="storeID" /></span></li>
-			</g:if>
-
-			<g:if test="${electronicsInstance?.cart}">
-				<li class="fieldcontain"><span id="cart-label"
-					class="property-label"><g:message
-							code="electronics.cart.label" default="Cart" /></span> <g:each
-						in="${electronicsInstance.cart}" var="c">
-						<span class="property-value" aria-labelledby="cart-label"><g:link
-								controller="cart" action="show" id="${c.id}">
-								${c?.encodeAsHTML()}
-							</g:link></span>
-					</g:each></li>
-			</g:if>
-
 			<g:if test="${electronicsInstance?.description}">
 				<li class="fieldcontain"><span id="description-label"
 					class="property-label"><g:message
@@ -94,15 +74,6 @@
 							bean="${electronicsInstance}" field="price" /></span></li>
 			</g:if>
 
-			<g:if test="${electronicsInstance?.prodCount}">
-				<li class="fieldcontain"><span id="prodCount-label"
-					class="property-label"><g:message
-							code="electronics.prodCount.label" default="Prod Count" /></span> <span
-					class="property-value" aria-labelledby="prodCount-label"><g:fieldValue
-							bean="${electronicsInstance}" field="prodCount" /></span></li>
-			</g:if>
-
-			
 			<g:if test="${electronicsInstance?.variants}">
 				<table>
 					<thead>

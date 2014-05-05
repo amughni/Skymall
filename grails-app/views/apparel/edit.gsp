@@ -6,7 +6,6 @@
 <g:set var="entityName"
 	value="${message(code: 'apparel.label', default: 'Apparel')}" />
 <title><g:message code="default.edit.label" args="[entityName]" /></title>
-<g:javascript src="jquery-1.3.2.min.js" />
 </head>
 <body>
 	<a href="#edit-apparel" class="skip" tabindex="-1"><g:message

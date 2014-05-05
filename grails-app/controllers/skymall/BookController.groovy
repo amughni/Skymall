@@ -3,6 +3,7 @@ package skymall
 
 import grails.converters.JSON
 import grails.transaction.Transactional;
+import skymall.Category;
 
 class BookController {
 

@@ -55,16 +55,6 @@
 
 </div>
 
-<div
-	class="fieldcontain ${hasErrors(bean: apparelInstance, field: 'prodCount', 'error')} required">
-	<label for="count"> <g:message code="apparel.prodCount.label"
-			default="Count" /> <span class="required-indicator">*</span>
-	</label>
-	<g:field name="prodCount" type="number"
-		value="${apparelInstance?.prodCount}" required="" />
-
-</div>
-
 <div class="fieldcontain"
 	${hasErrors(bean: apparelInstance, field: 'variants', 'error')}>
 	<label for="variants"> <g:message code="apparel.variants.label"

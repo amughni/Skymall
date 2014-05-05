@@ -8,8 +8,6 @@
 <g:set var="entityName"
 	value="${message(code: 'book.label', default: 'Book')}" />
 
-<g:javascript src="jquery-1.3.2.min.js" />
-
 <title><g:message code="default.create.label"
 		args="[entityName]" /></title>
 </head>

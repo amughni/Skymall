@@ -41,9 +41,6 @@
 					<g:sortableColumn property="prodName"
 						title="${message(code: 'electronics.prodName.label', default: 'Prod Name')}" />
 
-					<g:sortableColumn property="storeID"
-						title="${message(code: 'electronics.storeID.label', default: 'Store ID')}" />
-
 					<g:sortableColumn property="description"
 						title="${message(code: 'electronics.description.label', default: 'Description')}" />
 
@@ -52,9 +49,6 @@
 
 					<g:sortableColumn property="price"
 						title="${message(code: 'electronics.price.label', default: 'Price')}" />
-
-					<g:sortableColumn property="prodCount"
-						title="${message(code: 'electronics.prodCount.label', default: 'Prod Count')}" />
 
 				</tr>
 			</thead>
@@ -68,10 +62,6 @@
 							</g:link></td>
 
 						<td>
-							${fieldValue(bean: electronicsInstance, field: "storeID")}
-						</td>
-
-						<td>
 							${fieldValue(bean: electronicsInstance, field: "description")}
 						</td>
 
@@ -82,11 +72,6 @@
 						<td>
 							${fieldValue(bean: electronicsInstance, field: "price")}
 						</td>
-
-						<td>
-							${fieldValue(bean: electronicsInstance, field: "prodCount")}
-						</td>
-
 					</tr>
 				</g:each>
 			</tbody>

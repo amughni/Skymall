@@ -30,10 +30,6 @@
 					<g:message code="default.new.label" args="[entityName]" />
 				</g:link></li>
 			
-			<li><g:link controller="apparel" action="addToCart" params="[userID: 'user', storeID: 'asc']">
-					<g:message code="default.new.label" args="[entityName]" />
-				</g:link></li>
-				
 		</ul>
 	</div>
 	<div id="show-apparel" class="content scaffold-show" role="main">
@@ -128,18 +124,6 @@
 				</g:link>
 				<g:actionSubmit class="delete" action="delete"
 					value="${message(code: 'default.button.delete.label', default: 'Delete')}"
-					onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-			</fieldset>
-		</g:form>
-		
-		<g:form url="[resource:apparelInstance, action:'addToCart']"
-			method="">
-			<fieldset class="buttons">
-				<g:link class="add" action="add" resource="${apparelInstance}">
-					<g:message code="default.button.add.label" default="Add to cart" />
-				</g:link>
-				<g:actionSubmit class="add" action="add"
-					value="${message(code: 'default.button.add.label', default: 'Add to cart ')}"
 					onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 			</fieldset>
 		</g:form>

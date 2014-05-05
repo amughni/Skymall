@@ -11,6 +11,7 @@ class Variant implements Serializable{
 	static belongsTo = [ product: Product ]
 	
     static constraints = {
+		_deleted bindable: true
     }
 	
 	def String toString() {

@@ -14,7 +14,6 @@ class Product implements Serializable{
 	String prodName
 	Double price
 	String description
-	Integer prodCount
 	List variants = new ArrayList()
 	
 	static belongsTo = [Store, Cart]
@@ -27,19 +26,13 @@ class Product implements Serializable{
     }	
 	
 	static mapping = {
-		//		id composite: ['prodName', 'storeID']
 		variants cascade:"all,delete-orphan"
 	}
-	
-//	def getExpandableVariantList() {
-//		return LazyList.decorate(variants, FactoryUtils.instantiateFactory(Variant.class))
-//	}
 	
 	boolean equals(other) {
 		if (!(other instanceof Product)) {
 			return false
 		}
-
 		other.prodName == prodName && other.storeID == storeID
 	}
 

@@ -84,8 +84,6 @@
 			  }
 		  }
 	</g:javascript>
-
-
 </div>
 
 <div
@@ -117,16 +115,6 @@
 		value="${fieldValue(bean: bookInstance, field: 'price')}" required="" />
 </div>
 
-<div
-	class="fieldcontain ${hasErrors(bean: bookInstance, field: 'prodCount', 'error')} required">
-	<label for="prodCount"> <g:message code="book.prodCount.label"
-			default="Prod Count" /> <span class="required-indicator">*</span>
-	</label>
-	<g:field name="prodCount" type="number"
-		value="${bookInstance?.prodCount}" required="" />
-
-</div>
-
 <div class="fieldcontain"
 	${hasErrors(bean: bookInstance, field: 'variants', 'error')}>
 	<label for="variants"> <g:message code="book.variants.label"
@@ -134,5 +122,4 @@
 	</label>
 	<g:render template="variants" model="['bookInstance':bookInstance]" />
 </div>
-
 <g:hiddenField name="storeID" value="${bookInstance?.storeID}" />

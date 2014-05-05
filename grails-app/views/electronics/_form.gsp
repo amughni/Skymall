@@ -13,24 +13,6 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: electronicsInstance, field: 'storeID', 'error')} required">
-	<label for="storeID">
-		<g:message code="electronics.storeID.label" default="Store ID" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:textField name="storeID" required="" value="${electronicsInstance?.storeID}"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: electronicsInstance, field: 'cart', 'error')} ">
-	<label for="cart">
-		<g:message code="electronics.cart.label" default="Cart" />
-		
-	</label>
-	
-
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: electronicsInstance, field: 'description', 'error')} ">
 	<label for="description">
 		<g:message code="electronics.description.label" default="Description" />
@@ -57,15 +39,6 @@
 	<g:textField name="price"
 		value="${fieldValue(bean: electronicsInstance, field: 'price')}"
 		required="" />
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: electronicsInstance, field: 'prodCount', 'error')} required">
-	<label for="prodCount">
-		<g:message code="electronics.prodCount.label" default="Prod Count" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:field name="prodCount" type="number" value="${electronicsInstance.prodCount}" required=""/>
-
 </div>
 
 <div class="fieldcontain"

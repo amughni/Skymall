@@ -17,15 +17,15 @@
 				<g:set var="storeID" value="${electronicsInstance?.storeID}"
 					scope="flash" />
 			</g:if>
-			
+
 			<li><a class="home" href="${createLink(uri: '/')}"><g:message
 						code="default.home.label" /></a></li>
-						
+
 			<li><g:link controller="electronics" action="list"
 					id="${electronicsInstance?.storeID}">
 					<g:message code="default.list.label" args="[entityName]" />
 				</g:link></li>
-				
+
 			<li><g:link class="create" action="create">
 					<g:message code="default.new.label" args="[entityName]" />
 				</g:link></li>
@@ -41,7 +41,21 @@
 			</div>
 		</g:if>
 		<ol class="property-list electronics">
-
+			<g:if test="${electronicsInstance?.image}">
+				<li class="fieldcontain"><span id="image-label"
+					class="property-label"><g:message code="electronics.image.label"
+							default=" " /></span> <span
+					class="property-value" aria-labelledby="image-label"><img class="image"
+					src="${createLink(controller:'electronics', action:'getImage', id:electronicsInstance.id)}" />
+					</span>
+			</g:if>
+			<g:if test="${electronicsInstance?.prodName}">
+				<li class="fieldcontain"><span id="prodName-label"
+					class="property-label"><g:message
+							code="electronics.prodName.label" default="Prod Name" /></span> <span
+					class="property-value" aria-labelledby="prodName-label"><g:fieldValue
+							bean="${electronicsInstance}" field="prodName" /></span></li>
+			</g:if>
 			<g:if test="${electronicsInstance?.prodName}">
 				<li class="fieldcontain"><span id="prodName-label"
 					class="property-label"><g:message
@@ -80,10 +94,10 @@
 						<tr>
 
 							<g:sortableColumn property="name"
-								title="${message(code: 'apparel.name.label', default: 'Product Feature')}" />
+								title="${message(code: 'electronics.name.label', default: 'Product Feature')}" />
 
 							<g:sortableColumn property="value"
-								title="${message(code: 'apparel.value.label', default: 'Description')}" />
+								title="${message(code: 'electronics.value.label', default: 'Description')}" />
 
 						</tr>
 					</thead>
@@ -104,7 +118,7 @@
 					</tbody>
 				</table>
 			</g:if>
-			
+
 
 		</ol>
 		<g:form url="[resource:electronicsInstance, action:'delete']"

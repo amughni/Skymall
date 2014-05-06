@@ -40,7 +40,7 @@
 				</g:eachError>
 			</ul>
 		</g:hasErrors>
-		<g:form url="[resource:apparelInstance, action:'update']" method="PUT">
+		<g:uploadForm url="[resource:apparelInstance, action:'update']" method="PUT">
 			<g:hiddenField name="version" value="${apparelInstance?.version}" />
 			<fieldset class="form">
 				<g:render template="form" />
@@ -49,7 +49,7 @@
 				<g:actionSubmit class="save" action="update"
 					value="${message(code: 'default.button.update.label', default: 'Update')}" />
 			</fieldset>
-		</g:form>
+		</g:uploadForm>
 	</div>
 </body>
 </html>

@@ -37,6 +37,19 @@
 </div>
 
 <div
+	class="fieldcontain
+	${hasErrors(bean: electronicsInstance, field: 'image', 'error')}">
+	<label for="price"> <g:message code="electronics.image.label"
+			default="Product Image" />
+	</label> <input type="file" name="image" id="image" />
+
+	<g:if test="${electronics?.image}">
+		<img class="image"
+			src="${createLink(controller:'electronics', action:'getImage', id:electronicsInstance.id)}" />
+	</g:if>
+</div>
+
+<div
 	class="fieldcontain ${hasErrors(bean: electronicsInstance, field: 'description', 'error')} ">
 	<label for="description"> <g:message
 			code="electronics.description.label" default="Description" />

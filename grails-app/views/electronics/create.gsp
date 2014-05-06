@@ -38,7 +38,7 @@
 				</g:eachError>
 			</ul>
 		</g:hasErrors>
-		<g:form url="[resource:electronicsInstance, action:'save']">
+		<g:uploadForm url="[resource:electronicsInstance, action:'save']">
 			<fieldset class="form">
 				<g:render template="form" />
 			</fieldset>
@@ -46,7 +46,7 @@
 				<g:submitButton name="create" class="save"
 					value="${message(code: 'default.button.create.label', default: 'Create')}" />
 			</fieldset>
-		</g:form>
+		</g:uploadForm>
 	</div>
 </body>
 </html>

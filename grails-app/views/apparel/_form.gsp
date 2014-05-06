@@ -44,7 +44,18 @@
 	<g:textField name="apparelSize" value="${apparelInstance?.apparelSize}" />
 
 </div>
+<div
+	class="fieldcontain
+	${hasErrors(bean: apparelInstance, field: 'image', 'error')}">
+	<label for="price"> <g:message code="apparel.image.label"
+			default="Product Image" />
+	</label> <input type="file" name="image" id="image" />
 
+	<g:if test="${apparel?.image}">
+		<img class="image"
+			src="${createLink(controller:'apparel', action:'getImage', id:apparelInstance.id)}" />
+	</g:if>
+</div>
 <div
 	class="fieldcontain ${hasErrors(bean: apparelInstance, field: 'description', 'error')} ">
 	<label for="description"> <g:message
@@ -58,7 +69,7 @@
 <div class="fieldcontain"
 	${hasErrors(bean: apparelInstance, field: 'variants', 'error')}>
 	<label for="variants"> <g:message code="apparel.variants.label"
-			default="" /> 
+			default="" />
 	</label>
 	<g:render template="variants"
 		model="['apparelInstance':apparelInstance]" />

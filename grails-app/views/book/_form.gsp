@@ -18,7 +18,7 @@
 			default="Author" /><span class="required-indicator">*</span>
 
 	</label>
-	<g:textField name="author"  required="" value="${bookInstance?.author}" />
+	<g:textField name="author" required="" value="${bookInstance?.author}" />
 
 </div>
 
@@ -28,7 +28,7 @@
 			default="Category" /><span class="required-indicator">*</span>
 
 	</label>
-	<g:select id="category" name="category"  required=""
+	<g:select id="category" name="category" required=""
 		from="${Category.getCategoryNames()}"
 		value="${bookInstance?.category}"
 		onchange="${remoteFunction(
@@ -42,7 +42,8 @@
 		<g:set var="category" value="${bookInstance?.category}" scope="flash" />
 	</g:if>
 
-	<g:select id="subCategory" name="subCategory"  required="" from="${bookInstance?.subCategories}"
+	<g:select id="subCategory" name="subCategory" required=""
+		from="${bookInstance?.subCategories}"
 		value="${bookInstance?.subCategory}"
 		noSelection="['':'-Choose a subcategory']"></g:select>
 	<g:javascript>
@@ -92,7 +93,7 @@
 			default="Isbn" /><span class="required-indicator">*</span>
 
 	</label>
-	<g:textField name="isbn"  required="" value="${bookInstance?.isbn}" />
+	<g:textField name="isbn" required="" value="${bookInstance?.isbn}" />
 </div>
 
 <div
@@ -100,8 +101,22 @@
 	<label for="price"> <g:message code="book.price.label"
 			default="Price" /> <span class="required-indicator">*</span>
 	</label>
-	<g:textField name="price"  required=""
+	<g:textField name="price" required=""
 		value="${fieldValue(bean: bookInstance, field: 'price')}" required="" />
+</div>
+
+
+
+<div
+	class="fieldcontain ${hasErrors(bean: bookInstance, field: 'image', 'error')}">
+	<label for="price"> <g:message code="book.image.label"
+			default="Product Image" />
+	</label> <input type="file" name="image" id="image" />
+
+	<g:if test="${book?.image}">
+		<img class="image"
+			src="${createLink(controller:'book', action:'getImage', id:bookInstance.id)}" />
+	</g:if>
 </div>
 
 <div

@@ -47,9 +47,6 @@
 					<g:sortableColumn property="category"
 						title="${message(code: 'book.category.label', default: 'Category')}" />
 
-					<g:sortableColumn property="description"
-						title="${message(code: 'book.description.label', default: 'Description')}" />
-
 					<g:sortableColumn property="isbn"
 						title="${message(code: 'book.isbn.label', default: 'Isbn')}" />
 
@@ -72,10 +69,6 @@
 
 						<td>
 							${fieldValue(bean: bookInstance, field: "category")}
-						</td>
-
-						<td>
-							${fieldValue(bean: bookInstance, field: "description")}
 						</td>
 
 						<td>

@@ -29,7 +29,7 @@
 			<li><g:link class="create" action="create">
 					<g:message code="default.new.label" args="[entityName]" />
 				</g:link></li>
-			
+
 		</ul>
 	</div>
 	<div id="show-apparel" class="content scaffold-show" role="main">
@@ -42,7 +42,14 @@
 			</div>
 		</g:if>
 		<ol class="property-list apparel">
-
+			<g:if test="${apparelInstance?.image}">
+				<li class="fieldcontain"><span id="image-label"
+					class="property-label"><g:message code="apparel.image.label"
+							default=" " /></span> <span class="property-value"
+					aria-labelledby="image-label"><img class="image"
+						src="${createLink(controller:'apparel', action:'getImage', id:apparelInstance.id)}" />
+				</span></li>
+			</g:if>
 			<g:if test="${apparelInstance?.prodName}">
 				<li class="fieldcontain"><span id="prodName-label"
 					class="property-label"><g:message

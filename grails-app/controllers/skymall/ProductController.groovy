@@ -1,7 +1,7 @@
 package skymall
 
 class ProductController {
-
+	public static final okcontents = ['image/png', 'image/jpeg', 'image/gif']
     def scaffold = Product
 	
 	def list(){

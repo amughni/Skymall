@@ -30,6 +30,22 @@ class ApparelController {
 					return
 				}
 			}
+
+			// Getting the file
+			def f = request.getFile('image')
+
+			// List of OK mime-types
+			if (f != null && f.size > 0 && !ProductController.okcontents.contains(f.getContentType())) {
+				flash.message = "File must be one of: ${ProductController.okcontents}"
+				respond apparelInstance.errors, view:'create'
+				return
+			}
+			if (f.size > 0){
+				// Save the image and mime type
+				apparelInstance.image = f.bytes
+				apparelInstance.imageType = f.contentType
+			}
+
 			apparelInstance.properties = params
 			def _toBeDeleted = apparelInstance.variants.findAll {it._deleted}
 			if (_toBeDeleted) {
@@ -38,7 +54,7 @@ class ApparelController {
 
 			if(!apparelInstance.hasErrors() && apparelInstance.save()) {
 				flash.message = "Apparel ${params.id} updated"
-				redirect(action:show,id:apparelInstance.id)
+				render (view:'show',model:[apparelInstance:apparelInstance])
 			}
 			else {
 				render(view:'edit',model:[apparelInstance:apparelInstance])
@@ -50,42 +66,57 @@ class ApparelController {
 		}
 	}
 	
-	def add(){
-		def apparelInstance = Apparel.get( params.id )
-		
+	def save(Apparel apparelInstance) {
+		if (apparelInstance == null) {
+			notFound()
+			return
+		}
+
+		if (apparelInstance.hasErrors()) {
+			respond apparelInstance.errors, view:'create'
+			return
+		}
+
+		// Getting the file
+		def f = request.getFile('image')
+
+		// List of OK mime-types
+		if (f != null && f.size > 0 && !ProductController.okcontents.contains(f.getContentType())) {
+			flash.message = "File must be one of: ${ProductController.okcontents}"
+			respond apparelInstance.errors, view:'create'
+			return
+		}
+		if (f.size > 0){
+			// Save the image and mime type
+			apparelInstance.image = f.bytes
+			apparelInstance.imageType = f.contentType
+		}
+
+		apparelInstance.save flush:true
+
+		request.withFormat {
+			form multipartForm {
+				flash.message = message(code: 'default.created.message', args: [
+					message(code: 'apparelInstance.label', default: 'User'),
+					apparelInstance.id
+				])
+				redirect apparelInstance
+			}
+			'*' { respond apparelInstance, [status: CREATED] }
+		}
 	}
-	//	@Transactional
-	//	def save(Apparel apparelInstance) {
-	//        if (apparelInstance == null) {
-	//            notFound()
-	//            return
-	//        }
-	//
-	//        if (apparelInstance.hasErrors()) {
-	//            respond apparelInstance.errors, view:'create'
-	//            return
-	//        }
-	//
-	//        apparelInstance.save flush:true
-	//
-	//        request.withFormat {
-	//            form multipartForm {
-	//                flash.message = message(code: 'default.created.message', args: [message(code: 'apparelInstance.label', default: 'User'), apparelInstance.id])
-	//                redirect apparelInstance
-	//            }
-	//            '*' { respond apparelInstance, [status: CREATED] }
-	//        }
-	//    }
-	//
-	//	protected void notFound() {
-	//		request.withFormat {
-	//			form multipartForm {
-	//				flash.message = message(code: 'default.not.found.message', args: [message(code: 'userInstance.label', default: 'User'), params.id])
-	//				redirect action: "index", method: "GET"
-	//			}
-	//			'*'{ render status: NOT_FOUND }
-	//		}
-	//	}
+	def getImage() {
+		def apparel = Apparel.get(params.id)
+		if (!apparel || !apparel.image || !apparel.imageType) {
+			response.sendError(404)
+			return
+		}
+		response.contentType = apparel.imageType
+		response.contentLength = apparel.image.size()
+		OutputStream out = response.outputStream
+		out.write(apparel.image)
+		out.close()
+	}
 
 	def scaffold = Apparel
 }

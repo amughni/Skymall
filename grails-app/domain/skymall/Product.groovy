@@ -19,8 +19,8 @@ class Product implements Serializable{
 
 	List variants = new ArrayList()
 
-	static belongsTo = [Store, Cart]
-	static hasMany = [cart: Cart, variants: Variant]
+	static belongsTo = [Store]
+	static hasMany = [variants: Variant]
 
 	static constraints = {
 		prodName(blank:false, unique:true)

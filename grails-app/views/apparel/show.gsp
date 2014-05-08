@@ -26,12 +26,18 @@
 					<g:message code="default.list.label" args="[entityName]" />
 				</g:link></li>
 
-				<g:if test="${session.user.userRole == 'Tenant'}">
-					<li><g:link class="create" action="create">
-							<g:message code="default.new.label" args="[entityName]" />
-						</g:link></li>
-				</g:if>
+			<g:if test="${session.user.userRole == 'Tenant'}">
+				<li><g:link class="create" action="create">
+						<g:message code="default.new.label" args="[entityName]" />
+					</g:link></li>
+			</g:if>
 
+			<g:if test="${session.user.userRole == 'Shopper'}">
+				<li><g:link controller="cart" action="addProduct"
+						params="[pid: apparelInstance.id, uid: session.user.id]">
+						<g:message code="Add to cart" args="[entityName]" />
+					</g:link></li>
+			</g:if>
 		</ul>
 	</div>
 	<div id="show-apparel" class="content scaffold-show" role="main">

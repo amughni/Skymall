@@ -27,8 +27,14 @@
 				</g:link></li>
 			<g:if test="${session.user.userRole == 'Tenant'}">
 				<li><g:link class="create" action="create">
-					<g:message code="default.new.label" args="[entityName]" />
-				</g:link></li>
+						<g:message code="default.new.label" args="[entityName]" />
+					</g:link></li>
+			</g:if>
+			<g:if test="${session.user.userRole == 'Shopper'}">
+				<li><g:link controller="cart" action="addProduct"
+						params="[pid: electronicsInstance.id, uid: session.user.id]">
+						<g:message code="Add to cart" args="[entityName]" />
+					</g:link></li>
 			</g:if>
 		</ul>
 	</div>
@@ -44,11 +50,12 @@
 		<ol class="property-list electronics">
 			<g:if test="${electronicsInstance?.image}">
 				<li class="fieldcontain"><span id="image-label"
-					class="property-label"><g:message code="electronics.image.label"
-							default=" " /></span> <span
-					class="property-value" aria-labelledby="image-label"><img class="image"
-					src="${createLink(controller:'electronics', action:'getImage', id:electronicsInstance.id)}" />
-					</span>
+					class="property-label"><g:message
+							code="electronics.image.label" default=" " /></span> <span
+					class="property-value" aria-labelledby="image-label"><img
+						class="image"
+						src="${createLink(controller:'electronics', action:'getImage', id:electronicsInstance.id)}" />
+				</span>
 			</g:if>
 			<g:if test="${electronicsInstance?.prodName}">
 				<li class="fieldcontain"><span id="prodName-label"
@@ -126,7 +133,8 @@
 			method="DELETE">
 			<g:if test="${session.user.userRole == 'Tenant'}">
 				<fieldset class="buttons">
-					<g:link class="edit" action="edit" resource="${electronicsInstance}">
+					<g:link class="edit" action="edit"
+						resource="${electronicsInstance}">
 						<g:message code="default.button.edit.label" default="Edit" />
 					</g:link>
 					<g:actionSubmit class="delete" action="delete"

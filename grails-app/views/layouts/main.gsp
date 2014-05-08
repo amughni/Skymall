@@ -20,7 +20,8 @@
 		<r:layoutResources />
 	</head>
 	<body>
-		<div id="grailsLogo" role="banner"><a href="http://grails.org"><img src="${resource(dir: 'images', file: 'grails_logo.png')}" alt="Grails"/></a></div>
+		<div id="skymallLogo" role="banner"><a href="#"><img src="${resource(dir: 'images', file: 'logo_skymall.jpg')}" alt="SkyMall"/></a></div>
+        <div class="header_line"></div>
 		<g:layoutBody/>
 		
 		<div class="footer" role="contentinfo"></div>

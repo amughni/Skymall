@@ -49,6 +49,13 @@ body {
 
 #grailsLogo {
 	background-color: #abbf78;
+	font-weight: 900;
+	font-size: 3.00em;	
+}
+
+#loginHeader {
+  float: right;
+  color: #fff;
 }
 
 /* replace with .no-boxshadow body if you have modernizr available */

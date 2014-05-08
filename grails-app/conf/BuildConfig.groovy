@@ -2,6 +2,7 @@ grails.servlet.version = "3.0" // Change depending on target container complianc
 grails.project.work.dir = "target"
 grails.project.target.level = 1.6
 grails.project.source.level = 1.6
+grails.enable.native2ascii = false
 //grails.project.war.file = "target/${appName}-${appVersion}.war"
 
 grails.project.fork = [

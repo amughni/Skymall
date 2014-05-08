@@ -45,6 +45,7 @@ import="skymall.StoreTypes"
 		</g:hasErrors>
 		
 		<g:form url="[resource:storeInstance, action:'save']">
+			<g:field type="hidden" name="userName" value="${session.user.userName}"/>			
 			<fieldset class="form">
 				<g:render template="form" />	
 			</fieldset>

@@ -20,7 +20,29 @@
 		<r:layoutResources />
 	</head>
 	<body>
-		<div id="grailsLogo" role="banner"><a href="http://grails.org"><img src="${resource(dir: 'images', file: 'grails_logo.png')}" alt="Grails"/></a></div>
+<%--		<div id="grailsLogo" role="banner"><a href="http://grails.org"><img src="${resource(dir: 'images', file: 'images.jpeg')}" alt="Grails"/></a></div>--%>
+		<div id="grailsLogo" role="banner">
+		<a href="http://localhost:8080/SkyMall">Skymall</a>
+
+		
+		</div>
+  		
+		<div id="loginHeader">
+			<g:if test="${session.user == null}">
+				<g:link class="user" controller="user"  action="login">
+					Login
+				</g:link>
+			</g:if>
+			<g:if test="${session.user != null}">
+				<label class="user" for="logoutLink">
+					${session.user.userName}
+				</label>
+				<g:link name="logoutLink" class="user" controller="user" action="logout">
+					Logout
+				</g:link>
+			</g:if>
+  		</div>
+		
 		<g:layoutBody/>
 		
 		<div class="footer" role="contentinfo"></div>

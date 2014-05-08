@@ -21,6 +21,11 @@ class StoreController {
 
 	
 	def  create(){
+		if(session.user.userRole != "Tenant") {
+			flash.error = message(code: 'default.not.authorized')
+			redirect(action: "index")
+			return
+		}
 		def userID = session.user.userName
 		respond new Store(userName:userID);
 	}

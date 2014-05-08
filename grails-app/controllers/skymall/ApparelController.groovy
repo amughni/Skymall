@@ -15,11 +15,23 @@ class ApparelController {
 	}
 
 	def  create(){
+		if(session.user.userRole != "Tenant") {
+			flash.error = message(code: 'default.not.authorized')
+			redirect(action: "list")
+			return
+		}
+
 		def storeid = flash.storeID
 		respond new Apparel(storeID:storeid);
 	}
 
 	def update()  {
+		if(session.user.userRole != "Tenant") {
+			flash.error = message(code: 'default.not.authorized')
+			redirect(action: "list")
+			return
+		}
+
 		def apparelInstance = Apparel.get( params.id )
 		if(apparelInstance) {
 			if(params.version) {

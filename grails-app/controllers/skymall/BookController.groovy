@@ -16,11 +16,23 @@ class BookController {
 	}
 
 	def  create(){
+		if(session.user.userRole != "Tenant") {
+			flash.error = message(code: 'default.not.authorized')
+			redirect(action: "list")
+			return
+		}
+
 		def storeid = flash.storeID
 		respond new Book(storeID:storeid);
 	}
 
 	def edit(){
+		if(session.user.userRole != "Tenant") {
+			flash.error = message(code: 'default.not.authorized')
+			redirect(action: "list")
+			return
+		}
+		
 		def book = Book.get(params.id)
 		book.subCategories = Category.getSubCategoryNames(book.category);
 		respond book

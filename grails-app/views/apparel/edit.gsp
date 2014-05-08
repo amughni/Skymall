@@ -17,9 +17,11 @@
 			<li><g:link class="list" action="list" id="${flash.storeID}">
 					<g:message code="default.list.label" args="[entityName]" />
 				</g:link></li>
+			<g:if test="${session.user.userRole == 'Tenant'}">
 			<li><g:link class="create" action="create">
 					<g:message code="default.new.label" args="[entityName]" />
 				</g:link></li>
+			</g:if>
 		</ul>
 	</div>
 	<div id="edit-apparel" class="content scaffold-edit" role="main">

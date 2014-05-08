@@ -1,5 +1,5 @@
 
-<%@ page import="skymall.Store" import="skymall.StoreTypes"%>
+<%@ page import="skymall.StoreTypes; skymall.Store" import="skymall.StoreTypes"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,6 +31,10 @@
 				test="${storeInstance?.storeType == StoreTypes.BOOKS.toString()}">
 				<g:link controller="Book" action="list" id="${storeInstance.id}">Product List</g:link>
 			</g:elseif>
+            <g:elseif
+                    test="${storeInstance?.storeType == StoreTypes.AUTOMOBILE.toString()}">
+                <g:link controller="Automobile" action="list" id="${storeInstance.id}">Product List</g:link>
+            </g:elseif>
 		</ul>
 	</div>
 	<div id="show-store" class="content scaffold-show" role="main">

@@ -85,15 +85,16 @@ body {
  }
 
 .user {
-    font: bold 14px arial;
-    color: #2F90C6;
-    text-decoration: no-underline;
     margin: 20px 20px;
+    font: bold 14px arial;
 }
 
-.user:hover, .user:focus {
-    text-decoration: underline;
-    color: #2F90C6;
+.heading-text {
+    float: left;
+    padding-left: 10px;
+    padding-top: 5px;
+    color: AED843;
+    font: bold 24px arial;
 }
 
 /* replace with .no-boxshadow body if you have modernizr available */
@@ -110,7 +111,7 @@ body {
 }
 
 a:link, a:visited, a:hover {
-	color: #48802c;
+	color: #2F90C6;
 }
 
 a:hover, a:active {
@@ -486,11 +487,11 @@ th a {
 }
 
 th a:link, th a:visited {
-	color: #666666;
+    color: #2F90C6;
 }
 
 th a:hover, th a:focus {
-	color: #333333;
+	color: #2F90C6;;
 }
 
 th.sortable a {

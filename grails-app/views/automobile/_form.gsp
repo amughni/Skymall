@@ -13,33 +13,6 @@
 
 </div>
 
-%{--<div class="fieldcontain ${hasErrors(bean: automobileInstance, field: 'storeID', 'error')} required">--}%
-	%{--<label for="storeID">--}%
-		%{--<g:message code="automobile.storeID.label" default="Store ID" />--}%
-		%{--<span class="required-indicator">*</span>--}%
-	%{--</label>--}%
-	%{--<g:textField name="storeID" required="" value="${automobileInstance?.storeID}"/>--}%
-
-%{--</div>--}%
-
-<div class="fieldcontain ${hasErrors(bean: automobileInstance, field: 'image', 'error')} ">
-	<label for="image">
-		<g:message code="automobile.image.label" default="Image" />
-		
-	</label>
-	<input type="file" id="image" name="image" />
-
-</div>
-
-%{--<div class="fieldcontain ${hasErrors(bean: automobileInstance, field: 'imageType', 'error')} ">--}%
-	%{--<label for="imageType">--}%
-		%{--<g:message code="automobile.imageType.label" default="Image Type" />--}%
-		%{----}%
-	%{--</label>--}%
-	%{--<g:textField name="imageType" value="${automobileInstance?.imageType}"/>--}%
-
-%{--</div>--}%
-
 <div class="fieldcontain ${hasErrors(bean: automobileInstance, field: 'description', 'error')} ">
 	<label for="description">
 		<g:message code="automobile.description.label" default="Description" />
@@ -67,21 +40,13 @@
 
 </div>
 
-%{--<div class="fieldcontain ${hasErrors(bean: automobileInstance, field: 'cart', 'error')} ">--}%
-	%{--<label for="cart">--}%
-		%{--<g:message code="automobile.cart.label" default="Cart" />--}%
-		%{----}%
-	%{--</label>--}%
-	%{----}%
-
-%{--</div>--}%
 
 <div class="fieldcontain ${hasErrors(bean: automobileInstance, field: 'price', 'error')} required">
 	<label for="price">
 		<g:message code="automobile.price.label" default="Price" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field name="price" value="${fieldValue(bean: automobileInstance, field: 'price')}" required=""/>
+	<g:textField name="price" required="" value="${fieldValue(bean: automobileInstance, field: 'price')}"/>
 
 </div>
 

@@ -10,11 +10,33 @@
 	<body>
 		<a href="#show-automobile" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
+            <ul>
+                <li><a class="home" href="${createLink(uri: '/')}"><g:message
+                        code="default.home.label" /></a></li>
+
+                <g:if test="${storeID == null}">
+                    <g:set var="storeID" value="${automobileInstance?.storeID}"
+                           scope="flash" />
+                </g:if>
+
+                <li><g:link controller="Automobile" action="list"
+                            id="${automobileInstance?.storeID}">
+                    <g:message code="default.list.label" args="[entityName]" />
+                </g:link></li>
+
+                <g:if test="${session.user.userRole == 'Tenant'}">
+                    <li><g:link class="create" action="create">
+                        <g:message code="default.new.label" args="[entityName]" />
+                    </g:link></li>
+                </g:if>
+
+                %{--<g:if test="${session.user.userRole == 'Shopper'}">--}%
+                    %{--<li><g:link controller="cart" action="addProduct"--}%
+                                %{--params="[pid: automobileInstance.id, uid: session.user.id]">--}%
+                        %{--<g:message code="Add to cart" args="[entityName]" />--}%
+                    %{--</g:link></li>--}%
+                %{--</g:if>--}%
+            </ul>
 		</div>
 		<div id="show-automobile" class="content scaffold-show" role="main">
 			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
@@ -35,28 +57,13 @@
 				<g:if test="${automobileInstance?.storeID}">
 				<li class="fieldcontain">
 					<span id="storeID-label" class="property-label"><g:message code="automobile.storeID.label" default="Store ID" /></span>
-					
+
 						<span class="property-value" aria-labelledby="storeID-label"><g:fieldValue bean="${automobileInstance}" field="storeID"/></span>
-					
+
 				</li>
 				</g:if>
-			
-				<g:if test="${automobileInstance?.image}">
-				<li class="fieldcontain">
-					<span id="image-label" class="property-label"><g:message code="automobile.image.label" default="Image" /></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${automobileInstance?.imageType}">
-				<li class="fieldcontain">
-					<span id="imageType-label" class="property-label"><g:message code="automobile.imageType.label" default="Image Type" /></span>
-					
-						<span class="property-value" aria-labelledby="imageType-label"><g:fieldValue bean="${automobileInstance}" field="imageType"/></span>
-					
-				</li>
-				</g:if>
-			
+
+
 				<g:if test="${automobileInstance?.description}">
 				<li class="fieldcontain">
 					<span id="description-label" class="property-label"><g:message code="automobile.description.label" default="Description" /></span>
@@ -83,18 +90,18 @@
 					
 				</li>
 				</g:if>
-			
-				<g:if test="${automobileInstance?.cart}">
-				<li class="fieldcontain">
-					<span id="cart-label" class="property-label"><g:message code="automobile.cart.label" default="Cart" /></span>
-					
-						<g:each in="${automobileInstance.cart}" var="c">
-						<span class="property-value" aria-labelledby="cart-label"><g:link controller="cart" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
-			
+
+				%{--<g:if test="${automobileInstance?.cart}">--}%
+				%{--<li class="fieldcontain">--}%
+					%{--<span id="cart-label" class="property-label"><g:message code="automobile.cart.label" default="Cart" /></span>--}%
+					%{----}%
+						%{--<g:each in="${automobileInstance.cart}" var="c">--}%
+						%{--<span class="property-value" aria-labelledby="cart-label"><g:link controller="cart" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></span>--}%
+						%{--</g:each>--}%
+					%{----}%
+				%{--</li>--}%
+				%{--</g:if>--}%
+
 				<g:if test="${automobileInstance?.price}">
 				<li class="fieldcontain">
 					<span id="price-label" class="property-label"><g:message code="automobile.price.label" default="Price" /></span>

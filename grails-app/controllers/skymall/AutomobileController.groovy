@@ -42,21 +42,6 @@ class AutomobileController {
                 }
             }
 
-            // Getting the file
-            def f = request.getFile('image')
-
-            // List of OK mime-types
-            if (f != null && f.size > 0 && !ProductController.okcontents.contains(f.getContentType())) {
-                flash.message = "File must be one of: ${ProductController.okcontents}"
-                respond automobileInstance.errors, view:'create'
-                return
-            }
-            if (f.size > 0){
-                // Save the image and mime type
-                automobileInstance.image = f.bytes
-                automobileInstance.imageType = f.contentType
-            }
-
             automobileInstance.properties = params
             def _toBeDeleted = automobileInstance.variants.findAll {it._deleted}
             if (_toBeDeleted) {
@@ -91,21 +76,6 @@ class AutomobileController {
         if (automobileInstance.hasErrors()) {
             respond automobileInstance.errors, view:'create'
             return
-        }
-
-        // Getting the file
-        def f = request.getFile('image')
-
-        // List of OK mime-types
-        if (f != null && f.size > 0 && !ProductController.okcontents.contains(f.getContentType())) {
-            flash.message = "File must be one of: ${ProductController.okcontents}"
-            respond automobileInstance.errors, view:'create'
-            return
-        }
-        if (f.size > 0){
-            // Save the image and mime type
-            automobileInstance.image = f.bytes
-            automobileInstance.imageType = f.contentType
         }
 
         automobileInstance.save flush:true

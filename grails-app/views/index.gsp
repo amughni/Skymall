@@ -5,26 +5,18 @@
 <title>User Login</title>
 </head>
 <body>
-	<div class="body">
+	<div class="body div-login">
 		<g:form controller="user" action="authenticate">
-			<div style="width: 220px">
-				<label>Email Address </label> <input type="text" name="email" /> 
-				<label>Password</label> <input type="text" name="password" /> 
-				
-			</div>
+			<div style="width: 190px">
+				<input type="text" name="email" class="login-text" placeholder="Username" />
+				<input type="text" name="password" class="login-text" placeholder="Password" />
+                <div class="buttons">
+                    <input type="submit" value="Login" />
+                    <g:link controller="user" action="create">Register</g:link>
+                </div>
 
-			<div class="buttons">
-				<span class="formButton"> <input type="submit" value="Login"></input>
-				</span>
 			</div>
-			
-			
 		</g:form>
-		
-		<div class="buttons">
-				<span class="formButton"> <g:link controller="user" action="create">Register</g:link>
-				</span>
-		</div>
 	</div>
 </body>
 </html>

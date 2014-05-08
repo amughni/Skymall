@@ -20,13 +20,8 @@
 		<r:layoutResources />
 	</head>
 	<body>
-<%--		<div id="grailsLogo" role="banner"><a href="http://grails.org"><img src="${resource(dir: 'images', file: 'images.jpeg')}" alt="Grails"/></a></div>--%>
-		<div id="grailsLogo" role="banner">
-		<a href="http://localhost:8080/SkyMall">Skymall</a>
-
-		
-		</div>
-  		
+		<div id="skymallLogo" role="banner"><a href="#"><img src="${resource(dir: 'images', file: 'logo_skymall.jpg')}" alt="SkyMall"/></a></div>
+        <div class="header_line"></div>
 		<div id="loginHeader">
 			<g:if test="${session.user == null}">
 				<g:link class="user" controller="user"  action="login">
@@ -42,7 +37,6 @@
 				</g:link>
 			</g:if>
   		</div>
-		
 		<g:layoutBody/>
 		
 		<div class="footer" role="contentinfo"></div>

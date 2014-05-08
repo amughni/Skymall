@@ -5,6 +5,11 @@ import grails.transaction.Transactional;
 class StoreController {
 
     def index() { 
+		if(session.user == null) {
+			redirect(controller:"user", action:"login")
+			return
+		}
+			
 		def userID = session.user.userName
 		def storeList = Store.list()
 		

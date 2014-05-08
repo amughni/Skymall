@@ -18,12 +18,7 @@ class StoreController {
 		
 		render(view:"index", model: [storeInstanceList: storeList])
 	}
-	
-	/*
-	 * 		def userID = session.user.userName
-	 * ,userName:userId
-		
-	 */
+
 	
 	def  create(){
 		def userID = session.user.userName

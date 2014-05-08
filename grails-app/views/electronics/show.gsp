@@ -25,10 +25,11 @@
 					id="${electronicsInstance?.storeID}">
 					<g:message code="default.list.label" args="[entityName]" />
 				</g:link></li>
-
-			<li><g:link class="create" action="create">
+			<g:if test="${session.user.userRole == 'Tenant'}">
+				<li><g:link class="create" action="create">
 					<g:message code="default.new.label" args="[entityName]" />
 				</g:link></li>
+			</g:if>
 		</ul>
 	</div>
 	<div id="show-electronics" class="content scaffold-show" role="main">
@@ -123,14 +124,16 @@
 		</ol>
 		<g:form url="[resource:electronicsInstance, action:'delete']"
 			method="DELETE">
-			<fieldset class="buttons">
-				<g:link class="edit" action="edit" resource="${electronicsInstance}">
-					<g:message code="default.button.edit.label" default="Edit" />
-				</g:link>
-				<g:actionSubmit class="delete" action="delete"
-					value="${message(code: 'default.button.delete.label', default: 'Delete')}"
-					onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-			</fieldset>
+			<g:if test="${session.user.userRole == 'Tenant'}">
+				<fieldset class="buttons">
+					<g:link class="edit" action="edit" resource="${electronicsInstance}">
+						<g:message code="default.button.edit.label" default="Edit" />
+					</g:link>
+					<g:actionSubmit class="delete" action="delete"
+						value="${message(code: 'default.button.delete.label', default: 'Delete')}"
+						onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+				</fieldset>
+			</g:if>
 		</g:form>
 	</div>
 </body>

@@ -10,7 +10,7 @@
 			<div class="div-login">
                 <div style="width: 220px">
                     <input type="text" class="login-text" name="email" placeholder="Username"/>
-                    <input type="text" class="login-text" name="password" placeholder="Password" />
+                    <input type="password" class="login-text" name="password" placeholder="Password" />
                 </div>
 
                 <div class="buttons">

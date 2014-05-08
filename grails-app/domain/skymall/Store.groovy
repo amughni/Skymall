@@ -12,6 +12,9 @@ class Store {
 	String zip
 	String country
 	
+	String userName
+	
+	
 	static constraints = {
 		storeName(blank:false, unique: true)
 	}

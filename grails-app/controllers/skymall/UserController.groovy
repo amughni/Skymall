@@ -102,7 +102,28 @@ class UserController {
         }
     }
 	
-	def login(){
-		redirect(controller:'Store', action:'index')
+	def login = {
+		render(view:"login")
 	}
+	
+	//authenticating the user
+	def authenticate = {
+		def user = User.findByUserNameAndPassword(params.email, params.password)
+		if(user){
+		  session.user = user
+		  flash.message = "Hello ${user.userName}!"
+		  redirect(controller:"store", action:"index")
+		}else{
+		  flash.message = "Sorry, ${params.email}. Please try again."
+		  redirect(action:"login")
+		}
+	  }
+	
+	//logout
+	def logout = {
+		flash.message = "Goodbye ${session.user.userName}"
+		session.user = null
+		redirect( action:"login")
+	}
+	
 }

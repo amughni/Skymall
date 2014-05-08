@@ -16,12 +16,24 @@ class ElectronicsController {
 	}
 
 	def  create(){
+		if(session.user.userRole != "Tenant") {
+			flash.error = message(code: 'default.not.authorized')
+			redirect(action: "list")
+			return
+		}
+
 		def storeid = flash.storeID
 		respond new Electronics(storeID:storeid);
 	}
 
 
 	def update()  {
+		if(session.user.userRole != "Tenant") {
+			flash.error = message(code: 'default.not.authorized')
+			redirect(action: "list")
+			return
+		}
+		
 		def electronicsInstance = Electronics.get( params.id )
 		if(electronicsInstance) {
 			if(params.version) {

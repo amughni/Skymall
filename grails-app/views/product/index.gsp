@@ -34,6 +34,13 @@
 				${flash.message}
 			</div>
 		</g:if>
+
+		<g:if test="${flash.error}">
+  			<div class="errors" style="display: block">
+  				${flash.error}
+  			</div>
+		</g:if>
+		
 		<table>
 			<thead>
 				<tr>

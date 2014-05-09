@@ -43,6 +43,8 @@ class CartController {
 		def cart = Cart.findByUser(user)
 		// find product
 		def product = Product.findById(pid)
+		
+		def currentController = ""
 
 		if(cart == null){
 			cart = new Cart()
@@ -64,7 +66,9 @@ class CartController {
 					redirect (controller: "book",  action: "show", id: pid)
 				else if ( product instanceof Electronics)
 					redirect (controller: "electronics",  action: "show", id: pid)
-					
+				else if ( product instanceof Shoe)
+					redirect (controller: "shoe",  action: "show", id: pid)
+
 				return;
 			}
 		}

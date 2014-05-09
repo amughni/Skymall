@@ -81,9 +81,9 @@
 
 		<g:form>
 			<fieldset class="buttons">
-				<g:link controller="apparel" action="show" id="${flash.prodID}">
+				<g:link controller="store" action="index" id="${flash.prodID}">
 					<g:message code="default.button.back.label"
-						default="Back to product" />
+						default="Back to Home" />
 				</g:link>
 			</fieldset>
 		</g:form>

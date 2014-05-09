@@ -39,6 +39,10 @@
                     test="${storeInstance?.storeType == StoreTypes.SHOES.toString()}">
                 <g:link controller="Shoe" action="list" id="${storeInstance.id}">Product List</g:link>
             </g:elseif>
+            <g:elseif
+                    test="${storeInstance?.storeType == StoreTypes.SPORTS.toString()}">
+                <g:link controller="Sports" action="list" id="${storeInstance.id}">Product List</g:link>
+            </g:elseif>
 		</ul>
 	</div>
 	<div id="show-store" class="content scaffold-show" role="main">

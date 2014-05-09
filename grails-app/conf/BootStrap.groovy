@@ -64,12 +64,21 @@ class BootStrap {
 			userName : "tenant")
 		
 		
+		def SportsAuthority = new Store(storeName: "SportsAuthority",
+			storeType: "Sports",
+			addressLine: "1st miller street",
+			city	: "San Jose",
+			state	: "California",
+			zip		: "95110",
+			country	: "USA",
+			userName : "tenant")
 		gap.save()
 		bestbuy.save()
 		pepboys.save()
 		bn.save()
 		zappos.save()
 		
+		SportsAuthority.save()
 		
     }
     def destroy = {

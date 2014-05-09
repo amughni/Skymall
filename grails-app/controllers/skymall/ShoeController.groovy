@@ -131,7 +131,7 @@ class ShoeController {
 		}
 
 		if (shoeInstance.hasErrors()) {
-			shoeInstance.style = Category.getStyleNames(shoeInstance.category);
+			shoeInstance.style = ShoeCategory.getStyleNames(shoeInstance.category);
 			respond shoeInstance.errors, view:'create'
 			return
 		}

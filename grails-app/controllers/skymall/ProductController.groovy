@@ -24,6 +24,9 @@ class ProductController {
 			redirect(controller: 'Shoe', action: 'list')
 		}
 		
+		else if(storeType == "Sports"){
+			redirect(controller: 'Sports', action: 'list', params: [storeID: params.id])
+		}
 		
 		//def prodList = Product.findAllByStoreID(params.id)
 		//render(view: "list")
@@ -46,6 +49,11 @@ class ProductController {
 			
 			redirect(controller: 'Apparel', action: 'newApparel', params: [storeID: params.id])
 		}*/
+		if(store.storeType == "Sports"){
+			render(view: "/sports/create", model: [storeID: params.id])
+			
+			redirect(controller: 'Sports', action: 'newSports', params: [storeID: params.id])
+		}
 	}
 	
 	def update = {

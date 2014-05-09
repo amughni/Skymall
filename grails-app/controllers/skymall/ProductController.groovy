@@ -20,6 +20,10 @@ class ProductController {
 		else if(storeType == "Automobile"){
 			redirect(controller: 'Automobile', action: 'list')
 		}
+		else if(storeType == "Shoe"){
+			redirect(controller: 'Shoe', action: 'list')
+		}
+		
 		
 		//def prodList = Product.findAllByStoreID(params.id)
 		//render(view: "list")

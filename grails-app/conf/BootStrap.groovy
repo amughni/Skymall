@@ -54,10 +54,21 @@ class BootStrap {
 			country	: "usa",
 			userName : "tenant")
 		
+		def zappos = new Store(storeName: "Zappos",
+			storeType: "Shoes",
+			addressLine: "130 N First Street",
+			city	: "San Jose",
+			state	: "California",
+			zip		: "94086",
+			country	: "usa",
+			userName : "tenant")
+		
+		
 		gap.save()
 		bestbuy.save()
 		pepboys.save()
 		bn.save()
+		zappos.save()
 		
 		
     }

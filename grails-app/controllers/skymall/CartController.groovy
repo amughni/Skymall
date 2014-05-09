@@ -7,6 +7,11 @@ class CartController {
 
 	def index() {
 	}
+	
+	def show(){
+		def cart = session.cart
+		render(view:'show', model:[cartInstance:cart])
+	}
 
 	/*
 	 * def add = {
@@ -41,15 +46,19 @@ class CartController {
 		// find user
 		User user = User.get(uid);
 		// find cart by user
-		def cart = Cart.findByUser(user)
+	//	def cart = Cart.findByUser(user)
+		def cart = session.cart
 		// find product
 		def product = Product.findById(pid)
 		
 		def currentController = ""
-
-		if(cart == null){
-			cart = new Cart()
-			cart.user = user;
+		
+		
+		if(session.cart == null){
+			//Cart is initialized during login. No need to create again here.
+			//cart = new Cart()
+			//session.cart = cart
+			//cart.user = user;
 		}else{
 			boolean found = false;
 			//			def d = cart.findAllByProductList(product) ;
@@ -74,25 +83,29 @@ class CartController {
 			}
 		}
 		cart.addToProductList(product);
-		cart.save()
+		//cart.save() // Saved in session. No need to save.
 		render(view:'show', model:[cartInstance:cart])
 	}
 
 	def deleteProduct(){
-		String pid = params.id
+		Long pid = params.id?.toLong()
 		String cartID = flash.cid
 
 		//def productInstance = Product.findById(prodID)
 
-		def cart = Cart.findById(cartID)
-
-		for(product in cart.productList){
+		//def cart = Cart.findById(cartID)
+		def cart = session.cart
+		def productToRemove = null
+		for(def product in cart.productList){
 			if(product.id == pid){
-				cart.productList.remove(product)
+				productToRemove = product
 			}
 		}
-
-		cart.save()
+		
+		if(productToRemove != null)
+			cart.productList?.remove(productToRemove)
+		
+		//cart.save() //Stored in session. No need to save.
 		render(view:'show', model:[cartInstance:cart])
 	}
 

@@ -29,14 +29,27 @@
                         Login
                     </g:link>
                 </g:if>
+
+
                 <g:if test="${session.user != null}">
                     <label class="user" for="logoutLink">
                         ${session.user.userName}
                     </label>
+					
+					<g:if test="${session.user.userRole == 'Shopper'}">
+		                <g:if test="${session.cart != null}">
+		                    <g:link name="cartLink" class="user" controller="cart" action="show">
+		                        My Cart (${ session.cart.productList?.size() })
+		                    </g:link>
+		                </g:if>
+	                </g:if>
+
                     <g:link name="logoutLink" class="user" controller="user" action="logout">
                         Logout
                     </g:link>
                 </g:if>
+                
+                
             </div>
         </div>
         <div class="header_line"></div>

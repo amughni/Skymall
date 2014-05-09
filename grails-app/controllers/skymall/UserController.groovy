@@ -111,6 +111,10 @@ class UserController {
 		def user = User.findByUserNameAndPassword(params.email, params.password)
 		if(user){
 		  session.user = user
+		  def cart = new Cart()
+		  session.cart = cart
+		  cart.user = user;
+
 		  flash.message = "Hello ${user.userName}!"
 		  redirect(controller:"store", action:"index")
 		}else{
@@ -123,6 +127,7 @@ class UserController {
 	def logout = {
 		flash.message = "Goodbye ${session.user.userName}"
 		session.user = null
+		session.cart = null
 		redirect( action:"login")
 	}
 	

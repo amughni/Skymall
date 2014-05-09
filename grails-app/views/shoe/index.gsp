@@ -12,7 +12,9 @@
 		<div class="nav" role="navigation">
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+				<g:if test="${session.user.userRole == 'Tenant'}">
+					<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+				</g:if>
 			</ul>
 		</div>
 		<div id="list-shoe" class="content scaffold-list" role="main">
@@ -42,9 +44,6 @@
 					
 						<td>${fieldValue(bean: shoeInstance, field: "storeID")}</td>
 					
-						<td>${fieldValue(bean: shoeInstance, field: "image")}</td>
-					
-						<td>${fieldValue(bean: shoeInstance, field: "imageType")}</td>
 					
 						<td>${fieldValue(bean: shoeInstance, field: "description")}</td>
 					

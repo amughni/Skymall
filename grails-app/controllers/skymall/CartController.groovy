@@ -8,7 +8,8 @@ class CartController {
 	def index() {
 	}
 
-	/*def add = {
+	/*
+	 * def add = {
 	 String uid = params.userID
 	 def cart = customShoppingCartService.getShoppingCart(uid);
 	 if(cart == null){

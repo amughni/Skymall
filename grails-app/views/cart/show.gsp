@@ -87,6 +87,15 @@
 				</g:link>
 			</fieldset>
 		</g:form>
+		
+		<g:form>
+			<fieldset class="buttons">
+				<g:link controller="user" action="checkout" id="${cartInstance?.productList}">
+					<g:message code="default.button.back.label"
+						default="Checkout" />
+				</g:link>
+			</fieldset>
+		</g:form>
 
 	</div>
 </body>

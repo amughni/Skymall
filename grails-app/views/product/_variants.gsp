@@ -1,6 +1,8 @@
 <script type="text/javascript">
 var childCount = ${apparelInstance?.variants.size()} + 0;
 
+var childCount = ${sportsInstance?.variants.size()} + 0;
+
 function addChild() {
 var htmlId = "variant" + childCount;
 var deleteIcon = "${resource(dir:'images/skin', file:'database_delete.png')}";
@@ -20,4 +22,12 @@ childCount++;
 			model="['variant':variant,'i':i]" />
 	</g:each>
 </div>
+<div id="childList">
+	<g:each var="variant"
+		in="${sportsInstance.variants}" status="j">
+		<g:render template='variant'
+			model="['variant':variant,'j':j]" />
+	</g:each>
+</div>
+
 <input type="button" value="Add Variant Feature" onclick="addChild();" />

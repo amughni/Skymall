@@ -9,9 +9,9 @@ class AutomobileController {
 
     def list(){
         //render params.id
-        def automobileList = Apparel.findAllByStoreID(params.id)
+        def automobileInstanceList = Apparel.findAllByStoreID(params.id)
         flash.storeID = params.id
-        render(view:"index", model: [AutomobileInstanceList: automobileList])
+        render(view:"index", model: [automobileInstanceList: automobileInstanceList])
     }
 
     def  create(){
@@ -37,7 +37,7 @@ class AutomobileController {
                 def version = params.version.toLong()
                 if(automobileInstance.version > version) {
                     automobileInstance.errors.rejectValue("version", "", "Another user has updated this product while you were editing.")
-                    render(view:'edit',model:[AutomobileInstanceList:automobileInstance])
+                    render(view:'edit',model:[automobileInstanceList:automobileInstance])
                     return
                 }
             }
@@ -50,10 +50,10 @@ class AutomobileController {
 
             if(!automobileInstance.hasErrors() && automobileInstance.save()) {
                 flash.message = "Automobile ${params.id} updated"
-                render (view:'show',model:[AutomobileInstance:automobileInstance])
+                render (view:'show',model:[automobileInstance:automobileInstance])
             }
             else {
-                render(view:'edit',model:[AutomobileInstance: automobileInstance])
+                render(view:'edit',model:[automobileInstance: automobileInstance])
             }
         }
         else {

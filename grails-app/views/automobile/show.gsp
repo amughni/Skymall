@@ -54,14 +54,14 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${automobileInstance?.storeID}">
-				<li class="fieldcontain">
-					<span id="storeID-label" class="property-label"><g:message code="automobile.storeID.label" default="Store ID" /></span>
+				%{--<g:if test="${automobileInstance?.storeID}">--}%
+				%{--<li class="fieldcontain">--}%
+					%{--<span id="storeID-label" class="property-label"><g:message code="automobile.storeID.label" default="Store ID" /></span>--}%
 
-						<span class="property-value" aria-labelledby="storeID-label"><g:fieldValue bean="${automobileInstance}" field="storeID"/></span>
+						%{--<span class="property-value" aria-labelledby="storeID-label"><g:fieldValue bean="${automobileInstance}" field="storeID"/></span>--}%
 
-				</li>
-				</g:if>
+				%{--</li>--}%
+				%{--</g:if>--}%
 
 
 				<g:if test="${automobileInstance?.description}">
@@ -124,10 +124,12 @@
 			
 			</ol>
 			<g:form url="[resource:automobileInstance, action:'delete']" method="DELETE">
-				<fieldset class="buttons">
-					<g:link class="edit" action="edit" resource="${automobileInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-				</fieldset>
+                <g:if test="${session.user.userRole == 'Tenant'}">
+                    <fieldset class="buttons">
+                        <g:link class="edit" action="edit" resource="${automobileInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+                        <g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+                    </fieldset>
+                </g:if>
 			</g:form>
 		</div>
 	</body>

@@ -9,7 +9,7 @@
 		<g:form controller="user" action="authenticate">
 			<div style="width: 190px">
 				<input type="text" name="email" class="login-text" placeholder="Username" />
-				<input type="text" name="password" class="login-text" placeholder="Password" />
+				<input type="password" name="password" class="login-text" placeholder="Password" />
                 <div class="buttons">
                     <input type="submit" value="Login" />
                     <g:link controller="user" action="create">Register</g:link>

@@ -45,15 +45,7 @@
 		</g:if>
 		<ol class="property-list sports">
 	
-			
-				<g:if test="${sportsInstance?.prodType}">
-				<li class="fieldcontain"><span id="prodType-label"
-					class="property-label"><g:message
-							code="sports.prodType.label" default="prodType" /></span> <span
-					class="property-value" aria-labelledby="prodType-label"><g:fieldValue
-							bean="${sportsInstance}" field="prodType" /></span></li>
-			</g:if>
-			
+
 			<g:if test="${sportsInstance?.prodName}">
 				<li class="fieldcontain"><span id="prodName-label"
 					class="property-label"><g:message
@@ -62,13 +54,7 @@
 							bean="${sportsInstance}" field="prodName" /></span></li>
 			</g:if>
   
-			<g:if test="${sportsInstance?.accessories}">
-				<li class="fieldcontain"><span id="accessories-label"
-					class="property-label"><g:message code="sports.accessories.label"
-							default="accessories" /></span> <span class="property-value"
-					aria-labelledby="accessories-label"><g:fieldValue
-							bean="${sportsInstance}" field="accessories" /></span></li>
-			</g:if>
+
 
 			<g:if test="${sportsInstance?.price}">
 				<li class="fieldcontain"><span id="price-label"

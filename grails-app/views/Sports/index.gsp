@@ -47,14 +47,8 @@
 					
 					<g:sortableColumn property="prodName"
 						title="${message(code: 'sports.prodName.label', default: 'Name of Sports')}" />
-					
-					<g:sortableColumn property="prodType"  
-						title="${message(code: 'sports.prodType.label', default: 'Type')}" />
 
-					
-					<g:sortableColumn property="accessories"
-						title="${message(code: 'sports.accessories.label', default: 'Accessories')}" />
-
+				
 					<g:sortableColumn property="Price"
 						title="${message(code: 'sports.price.label', default: 'Price')}" />
 
@@ -68,13 +62,7 @@
 								${fieldValue(bean: sportsInstance, field: "prodName")}
 							</g:link></td>
 
-						<td>
-							${fieldValue(bean: sportsInstance, field: "prodType")}
-						</td>
 
-						<td>
-							${fieldValue(bean: sportsInstance, field: "accessories")}
-						</td>
 
 						<td>
 							${fieldValue(bean: sportsInstance, field: "price")}

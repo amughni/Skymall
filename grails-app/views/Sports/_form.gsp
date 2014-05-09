@@ -5,16 +5,6 @@
 </g:if>
 
 <div
-	class="fieldcontain ${hasErrors(bean: sportsInstance, field: 'prodType', 'error')} required">
-	<label for="prodType"> <g:message code="sports.prodType.label"
-			default="prodType" /> <span class="required-indicator">*</span>
-	</label>
-	<g:textField name="prodType" required=""
-		value="${sportsInstance?.prodType}" />
-
-</div>
-
-<div
 	class="fieldcontain ${hasErrors(bean: sportsInstance, field: 'prodName', 'error')} required">
 	<label for="prodName"> <g:message code="sports.prodName.label"
 			default="Prod Name" /> <span class="required-indicator">*</span>
@@ -23,7 +13,7 @@
 		value="${sportsInstance?.prodName}" />
 
 </div>
-
+<!--  
 <div
 	class="fieldcontain ${hasErrors(bean: sportsInstance, field: 'accessories', 'error')} ">
 	<label for="accessories"> <g:message code="sports.accessories.label"
@@ -32,7 +22,7 @@
 	</label>
 	<g:textField name="accessories" value="${sportsInstance?.accessories}" />
 
-</div> 
+</div> --> 
 
 <div
 	class="fieldcontain ${hasErrors(bean: sportsInstance, field: 'price', 'error')} required">

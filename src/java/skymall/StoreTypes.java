@@ -2,7 +2,7 @@ package skymall;
 
 public enum StoreTypes {
 
-	APPAREL("Apparel"), ELECTRONICS("Electronics"), AUTOMOBILE("Automobile"), SHOES("Shoes"), BOOKS("Books"), SPORTS("Sports");;
+	APPAREL("Apparel"), ELECTRONICS("Electronics"), AUTOMOBILE("Automobile"), SHOES("Shoes"), BOOKS("Books");
 
 	final String desc;
 
